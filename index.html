@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vind je ook talent? Workshop NLwerktAANwerk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FFFFFF;
+  --paper-dark:#F5F5F2;
+  --ink:#1B2A62;
+  --ink-soft:#52608A;
+  --blue:#1B2A62;
+  --blue-deep:#161F4D;
+  --orange:#F3722C;
+  --orange-soft:#FFA873;
+  --orange-bright:#FF8A42;
+  --line:#E7E5DD;
+  --green:#2F8558;
+  --red:#D14B3B;
+  --mono: 'Inter', -apple-system, sans-serif;
+  --display: 'Poppins', 'Inter', -apple-system, sans-serif;
+  --body: 'Inter', -apple-system, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth; overflow-x:hidden; max-width:100%;}
+body{
+  background:#FFFFFF;
+  color:var(--ink);
+  font-family:var(--body);
+  line-height:1.6;
+  overflow-x:hidden;
+  max-width:100vw;
+}
+@media(prefers-reduced-motion:reduce){ *{animation-duration:.01ms !important; transition-duration:.01ms !important;} }
+
+/* === ANNOUNCEMENT BAR + SCAFFOLD HEADER === */
+.announce{
+  background:var(--orange); color:#fff; text-align:center;
+  font-family:var(--body); font-size:12.5px; font-weight:600;
+  padding:7px 16px;
+}
+.scaffold{
+  position:sticky; top:0; z-index:100;
+  background:#FFFFFF;
+  color:var(--ink);
+  border-bottom:1px solid var(--line);
+}
+.scaffold-inner{
+  max-width:1100px; margin:0 auto; padding:16px 24px;
+  display:flex; align-items:center; gap:22px; overflow-x:auto;
+}
+.scaffold-logo{
+  font-family:var(--display); font-weight:800; font-size:19px; letter-spacing:-.3px;
+  white-space:nowrap; padding-right:18px;
+  flex-shrink:0; color:var(--ink);
+}
+.scaffold-logo .o{color:var(--orange);}
+.scaffold-logo .aan{color:var(--orange); text-decoration:underline; text-decoration-color:var(--orange); text-underline-offset:3px;}
+.steps{display:flex; gap:6px; flex-wrap:nowrap;}
+.step{
+  font-family:var(--body); font-weight:600; font-size:14px; white-space:nowrap;
+  padding:8px 12px; border-radius:8px; color:var(--ink);
+  text-decoration:none; border:1px solid transparent; transition:.15s;
+}
+.step:hover{color:var(--orange);}
+.step.active{color:var(--orange); font-weight:700;}
+
+/* === HERO === */
+.hero-wrap{
+  position:relative; background:var(--orange); overflow:hidden;
+  padding-bottom:70px;
+}
+.hero-blob{position:absolute; pointer-events:none; opacity:.5;}
+.hero-blob.b1{width:420px; height:420px; left:-160px; bottom:-160px; background:var(--orange-bright); border-radius:50%;}
+.hero-wave{display:block; width:100%; height:auto; margin-bottom:-2px;}
+.hero{
+  max-width:1100px; margin:0 auto; padding:70px 24px 60px;
+  position:relative; z-index:1;
+}
+.hero-tag{
+  font-family:var(--body); font-size:13px; font-weight:700; color:#fff;
+  text-transform:uppercase; letter-spacing:1.5px; margin-bottom:18px;
+  display:flex; align-items:center; gap:10px; opacity:.85;
+}
+.hero-tag::before{content:"";width:24px;height:3px;border-radius:2px;background:#fff;}
+h1.hero-title{
+  font-family:var(--display); font-weight:800; font-size:clamp(32px,5.5vw,56px);
+  line-height:1.12; letter-spacing:-1px; color:#fff;
+  overflow-wrap:break-word; word-break:break-word; max-width:760px;
+}
+h1.hero-title em{font-style:normal; color:var(--blue-deep);}
+.hero-sub{
+  margin-top:22px; max-width:560px; font-size:18px; color:rgba(255,255,255,.92);
+}
+.hero-meta{
+  margin-top:34px; display:flex; gap:0; flex-wrap:wrap;
+}
+.meta-item{
+  background:rgba(255,255,255,.18); border-radius:14px;
+  padding:14px 22px; margin-right:14px;
+}
+.meta-item .k{font-family:var(--body); font-size:11px; text-transform:uppercase; color:rgba(255,255,255,.8); letter-spacing:1px; font-weight:600;}
+.meta-item .v{font-family:var(--display); font-weight:800; font-size:18px; margin-top:2px; color:#fff;}
+
+/* === SECTION SYSTEM === */
+.section{
+  max-width:1100px; margin:0 auto; padding:64px 24px;
+  border-bottom:1px solid var(--line);
+}
+.section-head{
+  display:flex; align-items:baseline; gap:16px; margin-bottom:32px;
+}
+.section-num{
+  font-family:var(--body); font-size:13px; color:var(--orange); font-weight:700;
+  background:#FFF1EB; padding:5px 12px; border-radius:999px;
+}
+.section-time{
+  margin-left:auto; font-family:var(--body); font-weight:600; font-size:12px; color:var(--ink-soft);
+  background:var(--paper-dark); padding:5px 12px; border-radius:999px; white-space:nowrap;
+}
+h2.section-title{
+  font-family:var(--display); font-weight:800; font-size:clamp(24px,3.6vw,36px);
+  letter-spacing:-.5px; color:var(--ink);
+}
+.lead{font-size:17px; color:var(--ink-soft); max-width:680px; margin-bottom:28px;}
+
+.section.white-bg{background:#fff;}
+.facilitator-note{
+  background:var(--paper-dark); border-left:3px solid var(--orange); border-radius:0 12px 12px 0;
+  padding:14px 18px; font-size:14px; color:var(--ink-soft); margin:24px 0;
+}
+.facilitator-note b{color:var(--ink); font-family:var(--body); font-size:11px; text-transform:uppercase; letter-spacing:.5px; font-weight:700; display:block; margin-bottom:4px;}
+
+/* buttons */
+.btn{
+  font-family:var(--body); font-weight:700; font-size:15px;
+  padding:14px 28px; border-radius:999px; border:2px solid var(--orange);
+  background:var(--orange); color:#fff; cursor:pointer; transition:.15s;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.btn:hover{background:#FF7F52; border-color:#FF7F52; transform:translateY(-1px);}
+.btn.ghost{background:transparent; color:var(--ink); border-color:var(--line);}
+.btn.ghost:hover{background:var(--paper-dark); border-color:var(--line);}
+.btn:active{transform:translateY(0);}
+.btn:focus-visible{outline:3px solid var(--blue); outline-offset:2px;}
+
+/* === TIMER WIDGET === */
+.timer-box{
+  background:var(--blue-deep); color:#fff; border-radius:18px;
+  padding:22px 26px; display:flex; align-items:center; gap:22px;
+  margin:26px 0; flex-wrap:wrap;
+}
+.timer-display{font-family:var(--display); font-weight:800; font-size:40px; letter-spacing:.5px; min-width:120px;}
+.timer-display.warn{color:var(--orange-soft);}
+.timer-display.done{color:var(--orange); animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.timer-controls{display:flex; gap:8px; flex-wrap:wrap;}
+.timer-controls button{
+  font-family:var(--body); font-weight:600; font-size:13px; padding:9px 16px; border-radius:999px;
+  border:1px solid rgba(255,255,255,.3); background:transparent; color:#fff; cursor:pointer;
+}
+.timer-controls button:hover{background:rgba(255,255,255,.15);}
+.timer-label{font-family:var(--body); font-weight:600; font-size:11px; text-transform:uppercase; color:rgba(255,255,255,.55); letter-spacing:1px;}
+
+/* === STELLING / VOTING === */
+.stelling-card{
+  background:var(--paper-dark); border:none; border-radius:24px;
+  padding:36px; position:relative;
+}
+.stelling-quote{
+  font-family:var(--display); font-weight:700; font-size:clamp(20px,3vw,28px); line-height:1.32;
+  color:var(--ink); margin-bottom:24px;
+}
+.vote-row{display:flex; gap:14px; flex-wrap:wrap; margin:22px 0;}
+.vote-btn{
+  flex:1; min-width:160px; padding:16px; border-radius:16px; border:2px solid var(--line);
+  background:#fff; cursor:pointer; text-align:center; transition:.15s;
+}
+.vote-btn:hover{border-color:var(--ink);}
+.vote-btn .emoji{font-size:26px; display:block; margin-bottom:6px;}
+.vote-btn .lbl{font-weight:700; font-size:15px;}
+.vote-btn .count{font-family:var(--body); font-size:13px; color:var(--ink-soft); margin-top:4px;}
+.vote-btn.eens.active{border-color:var(--green); background:#E8F5EE;}
+.vote-btn.oneens.active{border-color:var(--red); background:#FBEAE7;}
+.vote-bar-wrap{height:10px; background:#fff; border-radius:999px; overflow:hidden; display:flex; margin-top:10px;}
+.vote-bar-eens{background:var(--green); height:100%;}
+.vote-bar-oneens{background:var(--red); height:100%;}
+
+.input-line{
+  width:100%; border:none; border-bottom:2px solid var(--line); background:transparent;
+  font-family:var(--body); font-size:15px; padding:8px 4px; margin-top:10px; color:var(--ink);
+}
+.input-line:focus{border-color:var(--orange); outline:none;}
+textarea.input-line{resize:vertical; min-height:50px; border:2px solid var(--line); border-radius:12px; padding:10px; background:#fff;}
+textarea.input-line:focus{border-color:var(--orange);}
+
+/* === KAN/STIJL/LEREN GRID === */
+.three-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:10px;}
+@media(max-width:800px){.three-grid{grid-template-columns:1fr;}}
+.kgrid-card{
+  background:var(--paper-dark); border:none; border-radius:20px; padding:26px;
+}
+.kgrid-card h3{font-family:var(--display); font-weight:800; font-size:17px; margin-bottom:10px; color:var(--ink);}
+.kgrid-card p{font-size:14px; color:var(--ink-soft); margin-bottom:10px;}
+.kgrid-card .ex{font-family:var(--body); font-weight:600; font-size:12px; color:var(--orange); background:#FFF1EB; padding:6px 12px; border-radius:999px; display:inline-block;}
+
+/* === EXERCISE BLOCK === */
+.exercise{
+  background:var(--blue-deep); color:#fff; border-radius:24px; padding:40px;
+  position:relative; overflow:hidden;
+}
+.exercise h3{font-family:var(--display); font-weight:800; font-size:24px; margin-bottom:6px;}
+.exercise .sub{color:var(--orange-soft); font-size:14px; margin-bottom:28px;}
+.ex-step{display:flex; gap:16px; margin-bottom:24px; align-items:flex-start;}
+.ex-num{
+  font-family:var(--display); font-weight:800; font-size:18px; color:#fff; flex-shrink:0;
+  width:36px; height:36px; background:var(--orange); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+}
+.ex-step-body{flex:1;}
+.ex-step-body h4{font-size:16px; margin-bottom:4px; font-weight:700;}
+.ex-step-body p{font-size:13.5px; color:rgba(255,255,255,.65); margin-bottom:8px;}
+.ex-step-body textarea{
+  width:100%; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.25);
+  border-radius:14px; color:#fff; padding:12px; font-family:var(--body); font-size:14.5px; min-height:64px;
+}
+.ex-step-body textarea::placeholder{color:rgba(255,255,255,.4);}
+.ex-step-body textarea:focus{outline:2px solid var(--orange); background:rgba(255,255,255,.12);}
+
+/* === FLIP CARDS (transferable skills) === */
+.flip-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:20px;}
+@media(max-width:900px){.flip-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.flip-grid{grid-template-columns:1fr;}}
+.flip-card{perspective:1200px; height:170px; cursor:pointer;}
+.flip-inner{position:relative; width:100%; height:100%; transition:transform .5s; transform-style:preserve-3d;}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front, .flip-back{
+  position:absolute; inset:0; backface-visibility:hidden; border-radius:18px;
+  padding:18px; display:flex; flex-direction:column; justify-content:center;
+}
+.flip-front{background:var(--paper-dark); border:none; box-shadow:0 1px 2px rgba(16,42,67,.06);}
+.flip-front .ficon{font-size:24px; margin-bottom:8px;}
+.flip-front h4{font-family:var(--display); font-weight:700; font-size:14px; line-height:1.25; color:var(--ink);}
+.flip-front .tap{position:absolute; bottom:10px; right:12px; font-family:var(--body); font-size:9px; color:var(--ink-soft); text-transform:uppercase; font-weight:600;}
+.flip-back{background:var(--blue-deep); color:#fff; transform:rotateY(180deg);}
+.flip-back p{font-size:12.5px; margin-bottom:8px; color:rgba(255,255,255,.85);}
+.flip-back .route{font-family:var(--body); font-weight:600; font-size:11px; color:var(--orange-soft);}
+
+/* === SKILLS TOOL DEMO === */
+.tool-panel{
+  background:var(--paper-dark); border:none; border-radius:24px; padding:30px;
+}
+.tool-input-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px;}
+.tool-input-row input{
+  flex:1; min-width:220px; padding:14px 18px; border:2px solid var(--line); border-radius:999px;
+  font-size:16px; font-family:var(--body); background:#fff;
+}
+.tool-input-row input:focus{outline:none; border-color:var(--orange);}
+.chip-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px;}
+.chip{font-family:var(--body); font-weight:600; font-size:12px; padding:7px 14px; background:#fff; border-radius:999px; cursor:pointer; border:1px solid var(--line);}
+.chip:hover{background:var(--orange-soft); color:#fff; border-color:var(--orange-soft);}
+.tool-result{margin-top:20px; display:none;}
+.tool-result.show{display:block; animation:fadein .4s;}
+@keyframes fadein{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+.tool-result-cols{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+@media(max-width:700px){.tool-result-cols{grid-template-columns:1fr;}}
+.tool-result h5{font-family:var(--body); font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--ink-soft); margin-bottom:10px;}
+.skill-tag{display:inline-block; background:var(--ink); color:#fff; font-size:13px; padding:7px 14px; border-radius:999px; margin:0 6px 6px 0;}
+.match-tag{display:inline-block; background:#fff; border:1px solid var(--line); font-size:13px; padding:7px 14px; border-radius:999px; margin:0 6px 6px 0;}
+
+/* === STAT STRIP === */
+.stat-strip{display:flex; gap:14px; flex-wrap:wrap; margin-top:20px;}
+.stat{flex:1; min-width:120px; padding:22px; text-align:center; background:var(--paper-dark); border-radius:18px;}
+.stat .num{font-family:var(--display); font-weight:800; font-size:28px; color:var(--orange);}
+.stat .lbl{font-family:var(--body); font-weight:600; font-size:11px; color:var(--ink-soft); text-transform:uppercase; margin-top:4px;}
+
+/* === WIN CARDS === */
+.win-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+@media(max-width:800px){.win-grid{grid-template-columns:1fr;}}
+.win-card{background:var(--paper-dark); border:none; border-radius:20px; padding:26px; position:relative;}
+.win-card .wn{position:absolute; top:18px; right:20px; font-family:var(--display); font-weight:800; font-size:30px; color:#fff;}
+.win-card h4{font-family:var(--display); font-weight:800; font-size:16px; margin:10px 0 8px; max-width:80%; color:var(--ink);}
+.win-card p{font-size:13.5px; color:var(--ink-soft);}
+
+/* === CAROUSEL === */
+.carousel-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:10px;}
+@media(max-width:900px){.carousel-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.carousel-grid{grid-template-columns:1fr;}}
+.carousel-card{background:var(--paper-dark); border:none; border-radius:18px; padding:20px; display:flex; flex-direction:column;}
+.carousel-card .ctag{font-family:var(--body); font-weight:700; font-size:10px; background:var(--orange); color:#fff; display:inline-block; padding:4px 10px; border-radius:999px; margin-bottom:10px; width:fit-content;}
+.carousel-card h4{font-family:var(--display); font-weight:800; font-size:15px; margin-bottom:8px; color:var(--ink);}
+.carousel-card .q{font-size:13.5px; color:var(--ink-soft); margin-bottom:10px; flex:1;}
+.carousel-card .ex2{font-family:var(--body); font-weight:600; font-size:11px; color:var(--orange); border-top:1px solid var(--line); padding-top:10px;}
+.carousel-card textarea{margin-top:10px; width:100%; min-height:60px; border:1px solid var(--line); border-radius:12px; padding:8px; font-size:12.5px; font-family:var(--body); background:#fff;}
+
+/* === COMMITMENT / CLOSING === */
+.commit-card{
+  background:var(--blue-deep); color:#fff; border-radius:24px; padding:36px;
+  border-left:none;
+}
+.commit-card h4{font-family:var(--body); font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--orange-soft); margin-bottom:6px;}
+.commit-card p.q{font-size:15px; margin-bottom:10px; color:rgba(255,255,255,.85);}
+.commit-card textarea{width:100%; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.25); border-radius:14px; color:#fff; padding:12px; font-family:var(--body); font-size:14.5px; min-height:54px; margin-bottom:24px;}
+.commit-card textarea:focus{outline:2px solid var(--orange);}
+
+.closing{
+  text-align:center; padding:90px 24px;
+  background:var(--blue-deep); color:#fff;
+}
+.closing-quote{
+  font-family:var(--display); font-weight:800; font-size:clamp(22px,4vw,40px); line-height:1.25;
+  max-width:780px; margin:0 auto 26px;
+}
+.closing-quote .hi{color:var(--orange-soft);}
+.closing .contact{margin-top:46px; font-family:var(--body); font-size:14px; color:rgba(255,255,255,.7);}
+.closing .contact b{color:#fff; display:block; font-family:var(--display); font-weight:800; font-size:18px; margin-bottom:6px;}
+.gift-row{display:flex; gap:16px; justify-content:center; margin-top:34px; flex-wrap:wrap;}
+.gift-btn{
+  background:transparent; border:2px solid var(--orange-soft); color:var(--orange-soft);
+  padding:14px 26px; border-radius:999px; font-weight:700; text-decoration:none; font-size:14px;
+}
+.gift-btn:hover{background:var(--orange-soft); color:var(--blue-deep);}
+
+footer{padding:30px 24px; text-align:center; font-family:var(--body); font-size:12px; color:var(--ink-soft); background:#fff;}
+
+/* print summary button */
+.print-note{margin-top:18px; font-size:12px; color:rgba(255,255,255,.5); font-family:var(--body);}
+
+::selection{background:var(--orange-soft); color:#fff;}
+</style>
+</head>
+<body>
+
+<!-- ===== STICKY SCAFFOLD NAV ===== -->
+<div class="announce">Deze workshop is een initiatief van NLwerktAANwerk, onderdeel van VNO-NCW en MKB-Nederland</div>
+<nav class="scaffold">
+  <div class="scaffold-inner" id="scaffoldNav">
+    <div class="scaffold-logo"><span class="o">NL</span>werkt<span class="aan">AAN</span>werk</div>
+    <div class="steps">
+      <a href="#opening" class="step" data-target="opening">00, Opening</a>
+      <a href="#stelling1" class="step" data-target="stelling1">01, Stelling</a>
+      <a href="#skills" class="step" data-target="skills">02, Skills</a>
+      <a href="#oefening1" class="step" data-target="oefening1">03, Omdenken</a>
+      <a href="#tool" class="step" data-target="tool">04, Tool</a>
+      <a href="#stelling2" class="step" data-target="stelling2">05, Stelling</a>
+      <a href="#carrousel" class="step" data-target="carrousel">06, Carrousel</a>
+      <a href="#afsluiting" class="step" data-target="afsluiting">07, Actie</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<div class="hero-wrap">
+  <div class="hero-blob b1"></div>
+  <header class="hero" id="opening">
+    <div class="hero-tag">Workshop, 2 uur, voor werkgevers</div>
+    <h1 class="hero-title">Je zoekt personeel. Vind je ook <em>talent?</em></h1>
+    <p class="hero-sub">In een krappe arbeidsmarkt vind je niet meer iedereen via het cv. Vandaag leer je breder kijken, naar skills in plaats van diploma's, en ga je naar huis met een concrete, andere blik op je eigen vacature.</p>
+    <a href="#opening-content" class="btn" style="margin-top:30px; background:#fff; border-color:#fff; color:var(--orange);">Start de workshop &nbsp;→</a>
+    <div class="hero-meta">
+    </div>
+  </header>
+  <svg class="hero-wave" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z" fill="#FFFFFF"></path></svg>
+</div>
+
+<!-- ===== SHEET 2: WIE IS NLWERKTAANWERK ===== -->
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">,</span>
+    <h2 class="section-title">Wie is NLwerktAANwerk?</h2>
+  </div>
+  <p class="lead">NLwerktAANwerk is een project van NLOM, een landelijk initiatief van werkgeversverenigingen. Op naar de 125.000 banen!</p>
+
+  <div class="three-grid">
+    <div class="kgrid-card">
+      <h3>NL onderneemt Inclusief</h3>
+      <p>Over Hoop en MDT, op weg naar de 125.000 banen voor mensen met afstand tot de arbeidsmarkt.</p>
+    </div>
+    <div class="kgrid-card">
+      <h3>NL onderneemt Vitaal</h3>
+      <p>Vitaal Bedrijf is dé wegwijzer voor werkgevers om aan de slag te gaan met vitaliteit in het bedrijf.</p>
+      <span class="ex">vitaalbedrijf.info</span>
+    </div>
+    <div class="kgrid-card">
+      <h3>NL onderneemt Circulair</h3>
+      <p>Ondersteunt bedrijven bij circulariteit. We verbinden koplopers met organisaties die graag willen beginnen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SHEET 3: GIDS / MARJAN INTRO ===== -->
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">,</span>
+    <h2 class="section-title">Jouw gids vandaag</h2>
+  </div>
+
+  <div style="display:flex; gap:36px; flex-wrap:wrap; align-items:flex-start;">
+    <div style="flex:1; min-width:260px;">
+      <p style="font-family:var(--display); font-weight:800; font-size:20px; color:var(--ink);">Marjan Lancee</p>
+      <p style="color:var(--ink-soft); font-size:15px; margin-top:4px;">Regisseur regio Gorinchem, Drechtsteden en Rivierenland</p>
+
+      <div style="margin-top:24px; display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; gap:10px; align-items:center; font-size:14.5px;"><span style="font-family:var(--mono); color:var(--orange); font-weight:700;">→</span> 1op1 advies aan werkgevers</div>
+        <div style="display:flex; gap:10px; align-items:center; font-size:14.5px;"><span style="font-family:var(--mono); color:var(--orange); font-weight:700;">→</span> Workshops en inspiratiesessies</div>
+        <div style="display:flex; gap:10px; align-items:center; font-size:14.5px;"><span style="font-family:var(--mono); color:var(--orange); font-weight:700;">→</span> Landelijk actief met zo'n 35 collega's ("gidsen")</div>
+        <div style="display:flex; gap:10px; align-items:center; font-size:14.5px;"><span style="font-family:var(--mono); color:var(--orange); font-weight:700;">→</span> Dienstverlening is kosteloos, geen lid nodig</div>
+      </div>
+    </div>
+    <div style="flex:1; min-width:260px; display:flex; flex-direction:column; gap:14px;">
+      <div class="kgrid-card" style="border-top-color:var(--blue);"><h3>Gids naar informatie</h3></div>
+      <div class="kgrid-card" style="border-top-color:var(--orange);"><h3>Persoonlijk advies</h3></div>
+      <div class="kgrid-card" style="border-top-color:var(--green);"><h3>Inspiratiesessies</h3></div>
+    </div>
+  </div>
+  <div class="facilitator-note"><b>Voor de begeleider</b>Kort introduceren wie je bent en waarom je hier staat. NLwerktaanwerk: gratis advies voor werkgevers.</div>
+</section>
+
+<!-- ===== 00 OPENING / HERKENNING ===== -->
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">00</span>
+    <h2 class="section-title">Herkenning</h2>
+  </div>
+  <p class="lead">Wie herkent dit? Steek je hand op bij elke uitspraak die klopt voor jouw bedrijf.</p>
+
+  <div class="stelling-card">
+    <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:10px;">
+      <label style="display:flex; gap:12px; align-items:center; font-size:16px; cursor:pointer;">
+        <input type="checkbox" style="width:20px;height:20px;accent-color:var(--orange);"> Je hebt op dit moment een vacature openstaan
+      </label>
+      <label style="display:flex; gap:12px; align-items:center; font-size:16px; cursor:pointer;">
+        <input type="checkbox" style="width:20px;height:20px;accent-color:var(--orange);"> Je krijgt weinig of geen reacties
+      </label>
+      <label style="display:flex; gap:12px; align-items:center; font-size:16px; cursor:pointer;">
+        <input type="checkbox" style="width:20px;height:20px;accent-color:var(--orange);"> Je krijgt reacties, maar ze zijn "net niet passend"
+      </label>
+    </div>
+  </div>
+
+  <div class="facilitator-note"><b>Voor de begeleider</b>Handen omhoog laten gaan in de zaal = energie en herkenning creeren. Elke hand is een knikje. Sluit af met de constatering: "dit speelt bij bijna iedereen hier."</div>
+
+  <div class="lead" style="margin-top:40px;">Drie ontwikkelingen die vragen om een andere aanpak:</div>
+  <div class="three-grid">
+    <div class="kgrid-card">
+      <h3>Krappe arbeidsmarkt</h3>
+      <p>Structurele schaarste. Minder instroom jongeren, grote groep gaat met pensioen.</p>
+    </div>
+    <div class="kgrid-card">
+      <h3>Arbeidsproductiviteit</h3>
+      <p>Bedrijven moeten meer doen met minder mensen. Onbenut arbeidspotentieel ligt te wachten.</p>
+    </div>
+    <div class="kgrid-card">
+      <h3>Werk dat verandert</h3>
+      <p>Digitalisering, AI en transities veranderen werk sneller dan we kunnen bijhouden.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 01 STELLING 1 ===== -->
+<section class="section" id="stelling1">
+  <div class="section-head">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Stelling: diploma of skill?</h2>
+  </div>
+
+  <div class="timer-box">
+    <div>
+      <div class="timer-label">Discussietijd</div>
+      <div class="timer-display" id="t1-display">08:00</div>
+    </div>
+    <div class="timer-controls">
+      <button onclick="startTimer('t1',8)">▶ Start</button>
+      <button onclick="pauseTimer('t1')">⏸ Pauze</button>
+      <button onclick="resetTimer('t1',8)">↺ Reset</button>
+    </div>
+  </div>
+
+  <div class="stelling-card">
+    <div class="stelling-quote">"Als iemand geen diploma heeft voor dit werk, heeft het geen zin om hem of haar uit te nodigen."</div>
+    <p style="color:var(--ink-soft); font-size:14px;">Eens of oneens? Wat heb je zelf meegemaakt?</p>
+    <div class="vote-row">
+      <button class="vote-btn eens" onclick="vote('s1','eens')">
+        <span class="emoji">🙋</span><span class="lbl">Eens</span><span class="count" id="s1-eens-count">0 stemmen</span>
+      </button>
+      <button class="vote-btn oneens" onclick="vote('s1','oneens')">
+        <span class="emoji">🙅</span><span class="lbl">Oneens</span><span class="count" id="s1-oneens-count">0 stemmen</span>
+      </button>
+    </div>
+    <div class="vote-bar-wrap"><div class="vote-bar-eens" id="s1-bar-eens" style="width:50%"></div><div class="vote-bar-oneens" id="s1-bar-oneens" style="width:50%"></div></div>
+    <textarea class="input-line" placeholder="💬 Geef een concreet voorbeeld uit jouw bedrijf..." style="margin-top:22px;"></textarea>
+  </div>
+
+  <div class="facilitator-note"><b>Voor de begeleider</b>Geef 8 minuten discussie. Vat daarna samen: de discussie laat zien dat we diploma's en ervaring vaak verwarren met kunnen.</div>
+
+  <div style="margin-top:36px; padding:28px; border:2px dashed var(--blue); border-radius:8px; background:#fff;">
+    <p style="font-family:var(--display); font-size:clamp(17px,2.5vw,22px); color:var(--blue-deep); line-height:1.4;">"Je zoekt iemand die het al gedaan heeft. Dus sluit je iedereen uit die het kan worden."</p>
+    <p style="margin-top:14px; color:var(--ink-soft); font-size:14.5px;">Een diploma zegt wat iemand geleerd <em>heeft</em>, niet wat iemand <em>kan</em>. En zeker niet wat iemand morgen kan leren.</p>
+  </div>
+</section>
+
+<!-- ===== 02 WAT ZIJN SKILLS ===== -->
+<section class="section white-bg" id="skills">
+  <div class="section-head">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Wat zijn skills?</h2>
+  </div>
+  <p class="lead">Je zoekt geen cv. Je zoekt iemand die het werk kan doen. Daar kijk je naar drie dingen:</p>
+
+  <div class="three-grid">
+    <div class="kgrid-card">
+      <h3>Wat iemand kan</h3>
+      <p>Concrete vaardigheden die het werk mogelijk maken. Direct inzetbaar op dag 1.</p>
+      <span class="ex">bijv. plannen, lassen, klantvragen afhandelen</span>
+    </div>
+    <div class="kgrid-card">
+      <h3>Hoe iemand werkt</h3>
+      <p>Werkstijl, samenwerking, karakter. Hoe reageert iemand als het druk wordt?</p>
+      <span class="ex">bijv. proactief, nauwkeurig, initiatief nemen</span>
+    </div>
+    <div class="kgrid-card">
+      <h3>Wat iemand kan leren</h3>
+      <p>Potentieel en leervermogen. Het meest onderschatte criterium bij kleine werkgevers.</p>
+      <span class="ex">bijv. leervermogen, aanpassingsvermogen</span>
+    </div>
+  </div>
+
+  <div style="margin-top:50px;">
+    <h3 style="font-family:var(--display); font-weight:800; font-size:20px; margin-bottom:6px; color:var(--ink);">Transferable skills: het onzichtbare kapitaal</h3>
+    <p style="color:var(--ink-soft); font-size:15px; max-width:640px; margin-bottom:8px;">Vaardigheden die iemand meeneemt van de ene naar de andere functie, ongeacht sector of titel. Klik een kaart om de overstap te zien.</p>
+    <div class="flip-grid" id="flipGrid"></div>
+  </div>
+</section>
+
+<!-- ===== 03 OEFENING 1 ===== -->
+<section class="section white-bg" id="oefening1">
+  <div class="section-head">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Oefening: jouw vacature omdenken</h2>
+  </div>
+
+  <div class="timer-box">
+    <div><div class="timer-label">Individueel werken</div><div class="timer-display" id="t2-display">15:00</div></div>
+    <div class="timer-controls">
+      <button onclick="startTimer('t2',15)">▶ Start</button>
+      <button onclick="pauseTimer('t2')">⏸ Pauze</button>
+      <button onclick="resetTimer('t2',15)">↺ Reset</button>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <h3>Pak je vacature erbij</h3>
+    <div class="sub">. Of neem er één in gedachten. Werk eerst individueel, bespreek daarna met je buurman of buurvrouw.</div>
+
+    <div class="ex-step">
+      <div class="ex-num">1</div>
+      <div class="ex-step-body">
+        <h4>Wat moet iemand écht kunnen? (max. 5)</h4>
+        <p>Niet wat er in je vacature staat, maar wat het werk echt vraagt op dag 1. Denk in handelingen, niet in functienamen.</p>
+        <textarea placeholder="1. ...&#10;2. ...&#10;3. ..."></textarea>
+      </div>
+    </div>
+    <div class="ex-step">
+      <div class="ex-num">2</div>
+      <div class="ex-step-body">
+        <h4>Wat is "nice to have"?</h4>
+        <p>Welke eisen staan er die eigenlijk niet noodzakelijk zijn? Diploma's en jarenlange ervaring zijn vaak nice-to-have.</p>
+        <textarea placeholder="Bijv. specifiek diploma, X jaar ervaring..."></textarea>
+      </div>
+    </div>
+    <div class="ex-step">
+      <div class="ex-num">3</div>
+      <div class="ex-step-body">
+        <h4>Wie zou dit ook kunnen?</h4>
+        <p>Welke andere functies of achtergronden sluiten aan bij jouw 5 dingen? Hier gebeurt het inzicht.</p>
+        <textarea placeholder="Bijv. iemand uit de horeca, een herintreder, iemand uit de zorg..."></textarea>
+      </div>
+    </div>
+    <div class="print-note">👉 Hier gebeurt het inzicht, bespreek dit samen met je buurman/vrouw.</div>
+  </div>
+
+  <div class="facilitator-note" style="margin-top:24px;"><b>Voor de begeleider</b>Loop rond tijdens de oefening. Help mensen vertalen van functietitel naar handelingen. 15 min individueel, 5 min nabespreken.</div>
+
+  <div style="margin-top:40px; background:#fff; border:1px solid var(--line); border-radius:8px; padding:30px;">
+    <h4 style="font-family:var(--display); font-weight:800; font-size:16px; margin-bottom:14px; color:var(--ink);">🥖 Klassenoefening: welke vaardigheden heeft een bakker?</h4>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;" id="bakkerChips">
+      <span class="chip">vroeg opstaan & doorzetten</span>
+      <span class="chip">nauwkeurig doseren</span>
+      <span class="chip">plannen onder tijdsdruk</span>
+      <span class="chip">klantcontact</span>
+      <span class="chip">hygiene en kwaliteit</span>
+      <span class="chip">fysiek werk volhouden</span>
+      <span class="chip">samenwerken in een klein team</span>
+    </div>
+    <p style="font-size:13px; color:var(--ink-soft); margin-top:14px;">Conclusie: een goede bakker zou ook prima meekunnen als productiemedewerker, in de horecakeuken of bij een logistiek bedrijf met vroege ploegendienst. De titel "bakker" verbergt skills die overal bruikbaar zijn.</p>
+  </div>
+</section>
+
+<!-- ===== 04 SKILLS TOOL DEMO ===== -->
+<section class="section white-bg" id="tool">
+  <div class="section-head">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Live demo: skills tool</h2>
+  </div>
+  <p class="lead">Voer een beroep in en zie direct welke skills eronder liggen, en welke andere beroepen dezelfde skills hebben. Dát is jouw nieuwe doelgroep.</p>
+
+  <div class="tool-panel">
+    <div class="tool-input-row">
+      <input type="text" id="toolInput" placeholder="Typ een beroep, bijv. verspaner, magazijnmedewerker, klantenservice..." onkeydown="if(event.key==='Enter')runTool()">
+      <button class="btn" onclick="runTool()">🔍 Bekijk skills</button>
+    </div>
+    <div class="chip-row">
+      <span class="chip" onclick="quickTool('verspaner')">verspaner</span>
+      <span class="chip" onclick="quickTool('magazijnmedewerker')">magazijnmedewerker</span>
+      <span class="chip" onclick="quickTool('klantenservice')">klantenservice</span>
+      <span class="chip" onclick="quickTool('chauffeur')">chauffeur</span>
+      <span class="chip" onclick="quickTool('zorgmedewerker')">zorgmedewerker</span>
+    </div>
+
+    <div class="tool-result" id="toolResult">
+      <div class="tool-result-cols">
+        <div>
+          <h5>Onderliggende skills</h5>
+          <div id="toolSkills"></div>
+        </div>
+        <div>
+          <h5>Matchende beroepen: jouw nieuwe doelgroep</h5>
+          <div id="toolMatches"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="facilitator-note" style="margin-top:20px;"><b>Voor de begeleider</b>Dit is een vereenvoudigde demo-versie. Open in een echte sessie ook de live Skills Kompas tool en laat de groep zelf beroepen intypen. Bespreek de matches die uitkomen.</div>
+
+  <div style="margin-top:36px;">
+    <h4 style="font-family:var(--display); font-weight:800; font-size:16px; margin-bottom:14px; color:var(--ink);">Voorbeeld uit de praktijk: werkgever zoekt verspaners</h4>
+    <p style="font-size:14px; color:var(--ink-soft); margin-bottom:14px;">Technisch verwante functies zijn direct overstapbaar en er zijn veel meer mensen beschikbaar (bron: UWV / CompetentNL):</p>
+    <div class="stat-strip">
+      <div class="stat"><div class="num">7K</div><div class="lbl">Verspaners</div></div>
+      <div class="stat"><div class="num">25K</div><div class="lbl">Lasser / bankwerker</div></div>
+      <div class="stat"><div class="num">40K</div><div class="lbl">Productiemed. metaal</div></div>
+      <div class="stat"><div class="num">50K+</div><div class="lbl">Operators</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 STELLING 2 ===== -->
+<section class="section white-bg" id="stelling2">
+  <div class="section-head">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Stelling: veranderend werk</h2>
+  </div>
+
+  <div class="timer-box">
+    <div><div class="timer-label">Discussietijd</div><div class="timer-display" id="t3-display">08:00</div></div>
+    <div class="timer-controls">
+      <button onclick="startTimer('t3',8)">▶ Start</button>
+      <button onclick="pauseTimer('t3')">⏸ Pauze</button>
+      <button onclick="resetTimer('t3',8)">↺ Reset</button>
+    </div>
+  </div>
+
+  <div class="stelling-card">
+    <div class="stelling-quote">"Over vijf jaar doet mijn medewerker ander werk dan nu, maar ik heb er nog nooit over nagedacht wat hij of zij dan nodig heeft."</div>
+    <p style="color:var(--ink-soft); font-size:14px;">Herken je dit? Wat zou het betekenen als je nu al wist welke skills je mensen nodig hebben?</p>
+    <div style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
+      <div>
+        <label style="font-family:var(--body); font-weight:700; font-size:12px; color:var(--orange);">💭 Welke functies veranderen bij jou?</label>
+        <textarea class="input-line"></textarea>
+      </div>
+      <div>
+        <label style="font-family:var(--body); font-weight:700; font-size:12px; color:var(--orange);">🤖 Wat doet AI al in je bedrijf?</label>
+        <textarea class="input-line"></textarea>
+      </div>
+      <div>
+        <label style="font-family:var(--body); font-weight:700; font-size:12px; color:var(--orange);">📚 Wie heeft iemand omgeschoold?</label>
+        <textarea class="input-line"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="facilitator-note"><b>Voor de begeleider</b>Geef 8 min discussie. Breng daarna de link met de volgende oefening: wat kunnen je huidige mensen al?</div>
+
+  <div style="margin-top:40px;">
+    <p class="lead" style="margin-bottom:14px;">Drie dingen die je wint als je anders gaat kijken:</p>
+    <div class="win-grid">
+      <div class="win-card"><div class="wn">01</div><h4>Andere doelgroepen aanspreken</h4><p>Je bereikt mensen die nooit op jouw vacature hadden gereageerd maar het werk prima kunnen doen.</p></div>
+      <div class="win-card"><div class="wn">02</div><h4>Medewerkers gericht laten groeien</h4><p>Als je weet welke skills iemand al heeft, weet je ook wat iemand nog nodig heeft. Gerichte ontwikkeling.</p></div>
+      <div class="win-card"><div class="wn">03</div><h4>Inspelen op veranderend werk</h4><p>Functies veranderen door automatisering en AI. Skills blijven overdraagbaar. Wie skills bijhoudt, blijft overeind.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 06 CASE CARROUSEL ===== -->
+<section class="section white-bg" id="carrousel">
+  <div class="section-head">
+    <span class="section-num">06</span>
+    <h2 class="section-title">Case carrousel</h2>
+  </div>
+  <p class="lead">Rouleer in groepjes langs de vier thema's, 8 minuten per thema. Noteer per thema minstens één concreet idee.</p>
+
+  <div class="timer-box">
+    <div><div class="timer-label">Per thema</div><div class="timer-display" id="t4-display">08:00</div></div>
+    <div class="timer-controls">
+      <button onclick="startTimer('t4',8)">▶ Start</button>
+      <button onclick="pauseTimer('t4')">⏸ Pauze</button>
+      <button onclick="resetTimer('t4',8)">↺ Reset / volgend thema</button>
+    </div>
+  </div>
+
+  <div class="carousel-grid">
+    <div class="carousel-card">
+      <span class="ctag">1, INSTROOM</span>
+      <h4>Werven</h4>
+      <p class="q">Hoe vind en selecteer ik meer kandidaten op basis van skills?</p>
+      <div class="ex2">vb. vacature herschrijven, samenwerken met opleiders</div>
+      <textarea placeholder="Ons idee..."></textarea>
+    </div>
+    <div class="carousel-card">
+      <span class="ctag">2, DOORSTROOM</span>
+      <h4>Benutten</h4>
+      <p class="q">Hoe benut ik verborgen skills van mijn huidige medewerkers beter?</p>
+      <div class="ex2">vb. interne talentkaarten of skillsmatrix maken</div>
+      <textarea placeholder="Ons idee..."></textarea>
+    </div>
+    <div class="carousel-card">
+      <span class="ctag">3, ONTWIKKELING</span>
+      <h4>Leren</h4>
+      <p class="q">Hoe stimuleer ik continu leren en bijscholen in mijn bedrijf?</p>
+      <div class="ex2">vb. skillspaspoort koppelen aan leerdoelen</div>
+      <textarea placeholder="Ons idee..."></textarea>
+    </div>
+    <div class="carousel-card">
+      <span class="ctag">4, SAMENWERKING</span>
+      <h4>Netwerk</h4>
+      <p class="q">Hoe werk ik samen met collega-bedrijven, scholen of O&O-fondsen?</p>
+      <div class="ex2">vb. regionale skills-pool, gezamenlijke instroomtrajecten</div>
+      <textarea placeholder="Ons idee..."></textarea>
+    </div>
+  </div>
+  <p style="margin-top:18px; font-family:var(--mono); font-size:13px; color:var(--blue);">→ Daarna presenteert elke groep kort hun input.</p>
+</section>
+
+<!-- ===== 07 AFSLUITING / COMMITMENT ===== -->
+<section class="section white-bg" id="afsluiting">
+  <div class="section-head">
+    <span class="section-num">07</span>
+    <h2 class="section-title">Schrijf dit op</h2>
+  </div>
+
+  <div class="commit-card">
+    <h4>Loslaten</h4>
+    <p class="q">1 eis in je vacature die je schrapt of omschrijft naar een skill</p>
+    <textarea id="commit1"></textarea>
+
+    <h4>Nieuwe doelgroep</h4>
+    <p class="q">1 type persoon of achtergrond die je voortaan ook actief benadert</p>
+    <textarea id="commit2"></textarea>
+
+    <h4>Intern benutten</h4>
+    <p class="q">1 medewerker met wie je volgende week een gesprek voert over zijn of haar skills</p>
+    <textarea id="commit3"></textarea>
+
+    <button class="btn" style="background:var(--orange); border-color:var(--orange); color:#1B1500;" onclick="downloadCommit()">⬇ Download mijn 3 acties</button>
+  </div>
+  <div class="facilitator-note"><b>Voor de begeleider</b>Geef 3 minuten. Laat daarna een paar mensen hardop benoemen wat ze opschrijven, dat verstevigt het commitment.</div>
+</section>
+
+<!-- ===== CLOSING ===== -->
+<section class="closing">
+  <p class="closing-quote">"Als je alleen zoekt naar wie het al <span class="hi">is</span>, mis je iedereen die het kan <span class="hi">worden</span>."</p>
+  <p style="max-width:600px; margin:0 auto; color:rgba(245,241,232,.7); font-size:15px;">Je vacature bepaalt wie je mist. Jouw mensen bepalen wat je al hebt.</p>
+
+  <div class="gift-row">
+    <a href="#" class="gift-btn">🧭 Open Skills Kompas (gratis)</a>
+    <a href="#" class="gift-btn">✏️ Open Vacature Schrijver (gratis)</a>
+  </div>
+
+  <div class="contact">
+    <b>Marjan Lancee</b>
+    Regisseur NLwerktAANwerk, Gorinchem, Drechtsteden en Rivierenland<br>
+    📞 06-41077991 &nbsp;,&nbsp; ✉ marjan@marjanlancee.nl<br><br>
+    "Geen vacature is te klein voor een goed gesprek."
+  </div>
+</section>
+
+<footer>NLwerktAANwerk, onderdeel van NLOM, een landelijk initiatief van werkgeversverenigingen. Dienstverlening kosteloos, geen lidmaatschap nodig</footer>
+
+<script>
+/* ===== Scaffold scroll-spy ===== */
+const steps = document.querySelectorAll('.step');
+const sections = [...steps].map(s => document.getElementById(s.dataset.target));
+function spy(){
+  let current = sections[0];
+  sections.forEach(sec=>{ if(sec && window.scrollY >= sec.offsetTop - 140) current = sec; });
+  steps.forEach(s=> s.classList.toggle('active', s.dataset.target === current.id));
+}
+window.addEventListener('scroll', spy); spy();
+
+/* ===== Timers ===== */
+const timers = {};
+function fmt(s){ const m=Math.floor(s/60); const sec=s%60; return String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0'); }
+function startTimer(id, mins){
+  if(!timers[id]) timers[id] = { remaining: mins*60, interval: null };
+  if(timers[id].interval) return;
+  timers[id].interval = setInterval(()=>{
+    timers[id].remaining--;
+    const disp = document.getElementById(id+'-display');
+    if(timers[id].remaining <= 0){
+      timers[id].remaining = 0;
+      clearInterval(timers[id].interval); timers[id].interval = null;
+      disp.classList.add('done'); disp.textContent = "00:00";
+      return;
+    }
+    disp.classList.toggle('warn', timers[id].remaining <= 60);
+    disp.textContent = fmt(timers[id].remaining);
+  }, 1000);
+}
+function pauseTimer(id){ if(timers[id] && timers[id].interval){ clearInterval(timers[id].interval); timers[id].interval = null; } }
+function resetTimer(id, mins){
+  if(timers[id] && timers[id].interval) clearInterval(timers[id].interval);
+  timers[id] = { remaining: mins*60, interval: null };
+  const disp = document.getElementById(id+'-display');
+  disp.classList.remove('warn','done');
+  disp.textContent = fmt(mins*60);
+}
+
+/* ===== Voting ===== */
+const votes = { s1: { eens:0, oneens:0 } };
+function vote(poll, choice){
+  votes[poll][choice]++;
+  document.getElementById(poll+'-eens-count').textContent = votes[poll].eens + ' stemmen';
+  document.getElementById(poll+'-oneens-count').textContent = votes[poll].oneens + ' stemmen';
+  document.querySelector('.vote-btn.eens').classList.toggle('active', choice==='eens');
+  document.querySelector('.vote-btn.oneens').classList.toggle('active', choice==='oneens');
+  const total = votes[poll].eens + votes[poll].oneens;
+  const pctE = total ? (votes[poll].eens/total*100) : 50;
+  document.getElementById('s1-bar-eens').style.width = pctE + '%';
+  document.getElementById('s1-bar-oneens').style.width = (100-pctE) + '%';
+}
+
+/* ===== Flip cards: transferable skills ===== */
+const skillsData = [
+  {icon:'🧩', title:'Probleemoplossend denken', desc:'Analyseren en oplossen zonder handleiding.', route:'Monteur, dan servicecoordinator, dan planner'},
+  {icon:'💬', title:'Communicatie', desc:'Uitleggen, luisteren, verwachtingen managen.', route:'Leraar, dan trainer, dan accountmanager'},
+  {icon:'🗂️', title:'Plannen & organiseren', desc:'Prioriteiten stellen, deadlines halen.', route:'Logistiek medewerker, dan projectassistent'},
+  {icon:'🎯', title:'Nauwkeurigheid', desc:'Oog voor detail en kwaliteitsbesef.', route:'Verspaner, dan QC medewerker'},
+  {icon:'🤝', title:'Samenwerken', desc:"Collega's meekrijgen, flexibel in rol.", route:'Zorg / horeca / productie: allemaal teamwerk'},
+  {icon:'🌱', title:'Leervermogen', desc:'Nieuwe dingen oppikken, omgaan met verandering.', route:'De skill van de toekomst, in elk beroep'},
+];
+const flipGrid = document.getElementById('flipGrid');
+skillsData.forEach((s,i)=>{
+  const card = document.createElement('div');
+  card.className = 'flip-card';
+  card.innerHTML = `<div class="flip-inner">
+    <div class="flip-front"><div class="ficon">${s.icon}</div><h4>${s.title}</h4><div class="tap">tik voor voorbeeld</div></div>
+    <div class="flip-back"><p>${s.desc}</p><div class="route">${s.route}</div></div>
+  </div>`;
+  card.onclick = ()=> card.classList.toggle('flipped');
+  flipGrid.appendChild(card);
+});
+
+/* ===== Skills tool demo ===== */
+const toolDB = {
+  'verspaner': { skills:['nauwkeurig meten','machines bedienen','technisch lezen','kwaliteitscontrole','zelfstandig werken'], matches:['lasser','bankwerker','productiemedewerker metaal','operator','CNC-instelmonteur'] },
+  'magazijnmedewerker': { skills:['plannen & organiseren','fysiek werk','systemen gebruiken (WMS)','nauwkeurig tellen','samenwerken onder tijdsdruk'], matches:['logistiek medewerker','orderpicker','vrachtwagenchauffeur','productiemedewerker','facilitair medewerker'] },
+  'klantenservice': { skills:['communicatie','probleemoplossend denken','geduld & empathie','systemen gebruiken','schriftelijk uitdrukken'], matches:['receptionist(e)','verkoopmedewerker','administratief medewerker','accountmanager','HR-assistent'] },
+  'chauffeur': { skills:['plannen & organiseren','zelfstandig werken','klantcontact','stressbestendigheid','verantwoordelijkheid'], matches:['magazijnmedewerker','servicemonteur','buitendienstmedewerker','koeriersdienst','logistiek planner'] },
+  'zorgmedewerker': { skills:['empathie & geduld','samenwerken','nauwkeurig rapporteren','omgaan met druk','communicatie'], matches:['kinderopvangmedewerker','horecamedewerker','receptionist(e) zorg','begeleider dagbesteding','HR/welzijnsfunctie'] },
+};
+function quickTool(term){ document.getElementById('toolInput').value = term; runTool(); }
+function runTool(){
+  const val = document.getElementById('toolInput').value.trim().toLowerCase();
+  let data = toolDB[val];
+  if(!data){
+    data = { skills:['plannen & organiseren','communicatie','nauwkeurig werken','samenwerken','probleemoplossend denken'], matches:['(typ een van de voorbeelden hierboven voor een specifieke match, of vul dit aan in de live tool)'] };
+  }
+  document.getElementById('toolSkills').innerHTML = data.skills.map(s=>`<span class="skill-tag">${s}</span>`).join('');
+  document.getElementById('toolMatches').innerHTML = data.matches.map(s=>`<span class="match-tag">${s}</span>`).join('');
+  document.getElementById('toolResult').classList.add('show');
+}
+
+/* ===== Download commitments ===== */
+function downloadCommit(){
+  const c1 = document.getElementById('commit1').value || 'geen invulling';
+  const c2 = document.getElementById('commit2').value || 'geen invulling';
+  const c3 = document.getElementById('commit3').value || 'geen invulling';
+  const text = `MIJN 3 ACTIES - NLwerktAANwerk workshop\\n\\nLOSLATEN\\n${c1}\\n\\nNIEUWE DOELGROEP\\n${c2}\\n\\nINTERN BENUTTEN\\n${c3}\\n`;
+  const blob = new Blob([text], {type:'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'mijn-3-acties.txt';
+  a.click();
+}
+</script>
+</body>
+</html>
