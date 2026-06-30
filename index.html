@@ -80,6 +80,19 @@ body{
 .hero{
   max-width:1100px; margin:0 auto; padding:70px 24px 60px;
   position:relative; z-index:1;
+  display:flex; align-items:center; gap:48px; flex-wrap:wrap;
+}
+.hero-text{flex:1; min-width:280px;}
+.hero-photo{
+  flex:0 0 320px; max-width:100%;
+}
+.hero-photo img{
+  width:100%; height:auto; display:block; border-radius:24px;
+  box-shadow:0 18px 40px rgba(0,0,0,.18);
+}
+@media(max-width:760px){
+  .hero{flex-direction:column-reverse;}
+  .hero-photo{flex:0 0 auto; max-width:280px;}
 }
 .hero-tag{
   font-family:var(--body); font-size:13px; font-weight:700; color:#fff;
@@ -105,6 +118,50 @@ h1.hero-title em{font-style:normal; color:var(--blue-deep);}
 }
 .meta-item .k{font-family:var(--body); font-size:11px; text-transform:uppercase; color:rgba(255,255,255,.8); letter-spacing:1px; font-weight:600;}
 .meta-item .v{font-family:var(--display); font-weight:800; font-size:18px; margin-top:2px; color:#fff;}
+
+/* === PPTX SLIDE LOOK (sheet 2 & 3, exact) === */
+.pptx-slide{
+  background:#fff; border-bottom:1px solid var(--line);
+}
+.pptx-bar{height:8px; background:var(--orange);}
+.pptx-body{max-width:1100px; margin:0 auto; padding:48px 32px 60px;}
+.pptx-logo{
+  font-family:var(--display); font-weight:800; font-size:34px; color:var(--ink); margin-bottom:18px;
+}
+.pptx-logo .o{color:var(--orange);}
+.pptx-logo-small{
+  font-family:var(--display); font-weight:800; font-size:18px; color:var(--ink); text-align:center; margin-top:50px;
+}
+.pptx-logo-small .o{color:var(--orange);}
+.pptx-intro{font-size:16px; color:var(--ink); max-width:780px;}
+.pptx-rule{height:3px; background:var(--orange); margin:26px 0 36px; max-width:1040px;}
+.pptx-cols{display:grid; grid-template-columns:repeat(3,1fr); gap:30px;}
+@media(max-width:760px){.pptx-cols{grid-template-columns:1fr;}}
+.pptx-col h4{font-family:var(--body); font-weight:700; font-size:15px; color:var(--orange); margin-bottom:16px;}
+.pptx-col ul{list-style:none; padding:0;}
+.pptx-col li{font-size:14px; color:var(--ink); margin-bottom:8px; padding-left:14px; position:relative;}
+.pptx-col li::before{content:"•"; position:absolute; left:0; color:var(--ink);}
+.pptx-col p{font-size:14px; color:var(--ink); line-height:1.6;}
+.pptx-link{color:var(--ink); font-size:13.5px; margin-top:14px;}
+
+.pptx-body-split{display:flex; gap:60px; flex-wrap:wrap;}
+.pptx-left{flex:1; min-width:280px;}
+.pptx-right{flex:1; min-width:280px; display:flex; flex-direction:column; align-items:flex-end; text-align:right;}
+@media(max-width:760px){.pptx-right{align-items:flex-start; text-align:left;}}
+.pptx-bullet{display:flex; align-items:center; gap:14px; font-size:16px; color:var(--ink); margin-bottom:18px;}
+.pptx-bullet .dot{width:14px; height:14px; border-radius:50%; background:var(--orange); flex-shrink:0;}
+.pptx-hr{height:1px; background:var(--line); margin:18px 0 22px; max-width:480px;}
+.pptx-plain{font-size:14.5px; color:var(--ink); margin-bottom:8px;}
+.pptx-name{font-family:var(--display); font-weight:800; font-size:22px; color:var(--ink); margin-top:24px;}
+.pptx-role{font-family:var(--display); font-weight:700; font-size:14.5px; color:var(--ink); margin-top:4px;}
+.pptx-icons{display:flex; gap:38px; flex-wrap:wrap; justify-content:flex-end;}
+@media(max-width:760px){.pptx-icons{justify-content:flex-start;}}
+.pptx-icon-item{text-align:center; width:110px;}
+.pptx-icon-circle{
+  width:90px; height:90px; border-radius:50%; background:var(--orange); color:#fff;
+  display:flex; align-items:center; justify-content:center; font-size:32px; margin:0 auto 12px;
+}
+.pptx-icon-label{font-family:var(--body); font-weight:700; font-size:11px; letter-spacing:.5px; color:var(--ink);}
 
 /* === SECTION SYSTEM === */
 .section{
@@ -357,67 +414,83 @@ footer{padding:30px 24px; text-align:center; font-family:var(--body); font-size:
 <div class="hero-wrap">
   <div class="hero-blob b1"></div>
   <header class="hero" id="opening">
-    <div class="hero-tag">Workshop, 2 uur, voor werkgevers</div>
-    <h1 class="hero-title">Je zoekt personeel. Vind je ook <em>talent?</em></h1>
-    <p class="hero-sub">In een krappe arbeidsmarkt vind je niet meer iedereen via het cv. Vandaag leer je breder kijken, naar skills in plaats van diploma's, en ga je naar huis met een concrete, andere blik op je eigen vacature.</p>
-    <a href="#opening-content" class="btn" style="margin-top:30px; background:#fff; border-color:#fff; color:var(--orange);">Start de workshop &nbsp;→</a>
-    <div class="hero-meta">
+    <div class="hero-text">
+      <h1 class="hero-title">Je zoekt personeel. Vind je ook <em>talent?</em></h1>
+      <p class="hero-sub">In een krappe arbeidsmarkt vind je niet meer iedereen via het cv. Vandaag leer je breder kijken, naar skills in plaats van diploma's, en ga je naar huis met een concrete, andere blik op je eigen vacature.</p>
+      <div class="hero-meta">
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="hero-foto.png" alt="Werkgever met een vacaturebordje in zijn werkplaats">
     </div>
   </header>
   <svg class="hero-wave" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z" fill="#FFFFFF"></path></svg>
 </div>
 
-<!-- ===== SHEET 2: WIE IS NLWERKTAANWERK ===== -->
-<section class="section">
-  <div class="section-head">
-    <span class="section-num">,</span>
-    <h2 class="section-title">Wie is NLwerktAANwerk?</h2>
-  </div>
-  <p class="lead">NLwerktAANwerk is een project van NLOM, een landelijk initiatief van werkgeversverenigingen. Op naar de 125.000 banen!</p>
-
-  <div class="three-grid">
-    <div class="kgrid-card">
-      <h3>NL onderneemt Inclusief</h3>
-      <p>Over Hoop en MDT, op weg naar de 125.000 banen voor mensen met afstand tot de arbeidsmarkt.</p>
+<!-- ===== SHEET 2: WIE IS NLWERKTAANWERK (exact pptx-slide) ===== -->
+<section class="pptx-slide">
+  <div class="pptx-bar"></div>
+  <div class="pptx-body">
+    <h2 class="pptx-logo"><span class="o">NL</span>werkt<span class="o">AAN</span>werk</h2>
+    <p class="pptx-intro">NLwerktaanwerk is een project van NLOM, een landelijk initiatief van werkgeversverenigingen.</p>
+    <div class="pptx-rule"></div>
+    <div class="pptx-cols">
+      <div class="pptx-col">
+        <h4>NL onderneemt Inclusief!</h4>
+        <ul>
+          <li>NLwerktaanwerk</li>
+          <li>Op naar de 125.000 banen!</li>
+          <li>Over Hoop</li>
+          <li>MDT</li>
+        </ul>
+      </div>
+      <div class="pptx-col">
+        <h4>NL onderneemt Vitaal!</h4>
+        <p>Vitaal Bedrijf is dé wegwijzer voor werkgevers om aan de slag te gaan met vitaliteit in het bedrijf.</p>
+        <p class="pptx-link">https://www.vitaalbedrijf.info</p>
+      </div>
+      <div class="pptx-col">
+        <h4>NL onderneemt Circulair!</h4>
+        <p>Ondersteunt bedrijven bij circulariteit. We verbinden koplopers met organisaties die graag willen beginnen.</p>
+      </div>
     </div>
-    <div class="kgrid-card">
-      <h3>NL onderneemt Vitaal</h3>
-      <p>Vitaal Bedrijf is dé wegwijzer voor werkgevers om aan de slag te gaan met vitaliteit in het bedrijf.</p>
-      <span class="ex">vitaalbedrijf.info</span>
-    </div>
-    <div class="kgrid-card">
-      <h3>NL onderneemt Circulair</h3>
-      <p>Ondersteunt bedrijven bij circulariteit. We verbinden koplopers met organisaties die graag willen beginnen.</p>
-    </div>
+    <h3 class="pptx-logo-small"><span class="o">NL</span>werkt<span class="o">AAN</span>werk</h3>
   </div>
 </section>
 
-<!-- ===== SHEET 3: GIDS / MARJAN INTRO ===== -->
-<section class="section">
-  <div class="section-head">
-    <span class="section-num">,</span>
-    <h2 class="section-title">Jouw gids vandaag</h2>
-  </div>
-
-  <div style="display:flex; gap:36px; flex-wrap:wrap; align-items:flex-start;">
-    <div style="flex:1; min-width:260px;">
-      <p style="font-family:var(--display); font-weight:800; font-size:20px; color:var(--ink);">Marjan Lancee</p>
-      <p style="color:var(--ink-soft); font-size:15px; margin-top:4px;">Regisseur regio Gorinchem, Drechtsteden en Rivierenland</p>
-
-      <div style="margin-top:24px; display:flex; flex-direction:column; gap:10px;">
-        <div style="display:flex; gap:10px; align-items:center; font-size:14.5px;"><span style="font-family:var(--mono); color:var(--orange); font-weight:700;">→</span> 1op1 advies aan werkgevers</div>
-        <div style="display:flex; gap:10px; align-items:center; font-size:14.5px;"><span style="font-family:var(--mono); color:var(--orange); font-weight:700;">→</span> Workshops en inspiratiesessies</div>
-        <div style="display:flex; gap:10px; align-items:center; font-size:14.5px;"><span style="font-family:var(--mono); color:var(--orange); font-weight:700;">→</span> Landelijk actief met zo'n 35 collega's ("gidsen")</div>
-        <div style="display:flex; gap:10px; align-items:center; font-size:14.5px;"><span style="font-family:var(--mono); color:var(--orange); font-weight:700;">→</span> Dienstverlening is kosteloos, geen lid nodig</div>
+<!-- ===== SHEET 3: GIDS / MARJAN INTRO (exact pptx-slide) ===== -->
+<section class="pptx-slide">
+  <div class="pptx-bar"></div>
+  <div class="pptx-body pptx-body-split">
+    <div class="pptx-left">
+      <div class="pptx-bullet"><span class="dot"></span> 1op1 advies aan werkgevers</div>
+      <div class="pptx-bullet"><span class="dot"></span> Workshops en inspiratiesessies</div>
+      <div class="pptx-bullet"><span class="dot"></span> 'Gidsen'</div>
+      <div class="pptx-hr"></div>
+      <p class="pptx-plain">Landelijk actief met zo'n 35 collega's</p>
+      <p class="pptx-plain">Dienstverlening is kosteloos (geen lid nodig)</p>
+      <p class="pptx-name">Marjan Lancee</p>
+      <p class="pptx-role">Regisseur regio Gorinchem, Drechtsteden en Rivierenland</p>
+    </div>
+    <div class="pptx-right">
+      <h2 class="pptx-logo" style="margin-bottom:50px;"><span class="o">NL</span>werkt<span class="o">AAN</span>werk</h2>
+      <div class="pptx-icons">
+        <div class="pptx-icon-item">
+          <div class="pptx-icon-circle">🔍</div>
+          <div class="pptx-icon-label">GIDS NAAR<br>INFORMATIE</div>
+        </div>
+        <div class="pptx-icon-item">
+          <div class="pptx-icon-circle">👥</div>
+          <div class="pptx-icon-label">PERSOONLIJK<br>ADVIES</div>
+        </div>
+        <div class="pptx-icon-item">
+          <div class="pptx-icon-circle">⭐</div>
+          <div class="pptx-icon-label">INSPIRATIE<br>SESSIES</div>
+        </div>
       </div>
     </div>
-    <div style="flex:1; min-width:260px; display:flex; flex-direction:column; gap:14px;">
-      <div class="kgrid-card" style="border-top-color:var(--blue);"><h3>Gids naar informatie</h3></div>
-      <div class="kgrid-card" style="border-top-color:var(--orange);"><h3>Persoonlijk advies</h3></div>
-      <div class="kgrid-card" style="border-top-color:var(--green);"><h3>Inspiratiesessies</h3></div>
-    </div>
   </div>
-  <div class="facilitator-note"><b>Voor de begeleider</b>Kort introduceren wie je bent en waarom je hier staat. NLwerktaanwerk: gratis advies voor werkgevers.</div>
+  <div class="facilitator-note" style="max-width:1100px; margin:24px auto 0;"><b>Voor de begeleider</b>Kort introduceren wie je bent en waarom je hier staat. NLwerktaanwerk: gratis advies voor werkgevers.</div>
 </section>
 
 <!-- ===== 00 OPENING / HERKENNING ===== -->
