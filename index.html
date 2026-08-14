@@ -119,6 +119,32 @@ h1.hero-title em{font-style:normal; color:var(--blue-deep);}
 .meta-item .k{font-family:var(--body); font-size:11px; text-transform:uppercase; color:rgba(255,255,255,.8); letter-spacing:1px; font-weight:600;}
 .meta-item .v{font-family:var(--display); font-weight:800; font-size:18px; margin-top:2px; color:#fff;}
 
+.quiz-opt{
+  width:100%; text-align:left; padding:12px 18px; border-radius:10px;
+  border:2px solid rgba(255,255,255,.25); background:rgba(255,255,255,.08);
+  color:#fff; font-family:var(--body); font-size:15px; font-weight:600; cursor:pointer;
+  transition:.15s;
+}
+.quiz-opt:hover{background:rgba(255,255,255,.18); border-color:rgba(255,255,255,.5);}
+.quiz-opt.gekozen-fout{background:#FBEAE7; border-color:var(--red); color:var(--red);}
+.quiz-opt.gekozen-goed{background:#E8F5EE; border-color:var(--green); color:var(--green);}
+
+/* === REGIO IN BEELD === */
+.regio-stat{background:var(--paper-dark); border-radius:16px; padding:20px; text-align:center;}
+.regio-stat-num{font-family:var(--display); font-weight:800; font-size:36px; color:var(--orange); line-height:1;}
+.regio-stat-lbl{font-size:12px; color:var(--ink-soft); margin-top:6px; line-height:1.4;}
+@media(max-width:760px){
+  div[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr) !important;}
+}
+.regio-card{background:var(--paper-dark); border-radius:18px; padding:24px;}
+.regio-card-icon{font-size:28px; margin-bottom:12px;}
+.regio-card h4{font-family:var(--display); font-weight:800; font-size:16px; color:var(--ink); margin-bottom:14px;}
+.regio-tag{display:inline-block; font-size:12px; font-weight:600; padding:4px 12px; border-radius:999px; margin:0 4px 6px 0;}
+.regio-tag.groei{background:#E6F4EC; color:var(--green);}
+.regio-tag.krimpt{background:#FBEAE7; color:var(--red);}
+.regio-note{font-size:12px; color:var(--ink-soft); margin-top:10px; line-height:1.5;}
+.regio-body{font-size:13.5px; color:var(--ink); margin-bottom:10px; line-height:1.55;}
+
 /* === PPTX SLIDE LOOK (sheet 2 & 3, exact) === */
 .pptx-slide{
   background:#fff; border-bottom:1px solid var(--line);
@@ -241,7 +267,16 @@ h2.section-title{
 .vote-btn .emoji{font-size:26px; display:block; margin-bottom:6px;}
 .vote-btn .lbl{font-weight:700; font-size:15px;}
 .vote-btn .count{font-family:var(--body); font-size:13px; color:var(--ink-soft); margin-top:4px;}
-.vote-btn.eens.active{border-color:var(--green); background:#E8F5EE;}
+.stelling-reactie{margin-top:22px; padding:20px 24px; border-radius:14px; animation:fadein .4s;}
+.reactie-eens{background:#FBEAE7; border-left:4px solid var(--red);}
+.reactie-oneens{background:#E8F5EE; border-left:4px solid var(--green);}
+.reactie-kop{font-family:var(--display); font-weight:800; font-size:16px; margin-bottom:6px;}
+.reactie-eens .reactie-kop{color:var(--red);}
+.reactie-oneens .reactie-kop{color:var(--green);}
+.reactie-tekst{font-size:15px; color:var(--ink);}
+
+.vote-btn.eens.active{border-color:var(--red); background:#FBEAE7;}
+
 .vote-btn.oneens.active{border-color:var(--red); background:#FBEAE7;}
 .vote-bar-wrap{height:10px; background:#fff; border-radius:999px; overflow:hidden; display:flex; margin-top:10px;}
 .vote-bar-eens{background:var(--green); height:100%;}
@@ -288,7 +323,17 @@ textarea.input-line:focus{border-color:var(--orange);}
 .ex-step-body textarea::placeholder{color:rgba(255,255,255,.4);}
 .ex-step-body textarea:focus{outline:2px solid var(--orange); background:rgba(255,255,255,.12);}
 
-/* === FLIP CARDS (transferable skills) === */
+.skills-list{display:flex; flex-wrap:wrap; gap:10px;}
+.skill-chip{
+  font-family:var(--body); font-weight:600; font-size:14px;
+  padding:10px 18px; border-radius:999px;
+  background:var(--blue); color:#fff;
+  opacity:0; transform:translateY(10px);
+  transition:opacity .4s, transform .4s;
+}
+.skill-chip.visible{opacity:1; transform:translateY(0);}
+
+/* === FLIP CARDS (overdraagbare skills) === */
 .flip-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:20px;}
 @media(max-width:900px){.flip-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:560px){.flip-grid{grid-template-columns:1fr;}}
@@ -393,12 +438,14 @@ footer{padding:30px 24px; text-align:center; font-family:var(--body); font-size:
 <body>
 
 <!-- ===== STICKY SCAFFOLD NAV ===== -->
-<div class="announce">Deze workshop is een initiatief van NLwerktAANwerk, onderdeel van VNO-NCW en MKB-Nederland</div>
+<div class="announce">Een initiatief van NLwerktAANwerk, onderdeel van VNO-NCW en MKB-Nederland</div>
 <nav class="scaffold">
   <div class="scaffold-inner" id="scaffoldNav">
     <div class="scaffold-logo"><span class="o">NL</span>werkt<span class="aan">AAN</span>werk</div>
     <div class="steps">
-      <a href="#opening" class="step" data-target="opening">00, Opening</a>
+      <a href="#regio" class="step" data-target="regio">· Regio</a>
+      <a href="#opening" class="step" data-target="opening">00, Waarom</a>
+      <a href="#vraagstukken" class="step" data-target="vraagstukken">· Vraagstukken</a>
       <a href="#stelling1" class="step" data-target="stelling1">01, Stelling</a>
       <a href="#skills" class="step" data-target="skills">02, Skills</a>
       <a href="#oefening1" class="step" data-target="oefening1">03, Omdenken</a>
@@ -427,130 +474,210 @@ footer{padding:30px 24px; text-align:center; font-family:var(--body); font-size:
   <svg class="hero-wave" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z" fill="#FFFFFF"></path></svg>
 </div>
 
-<!-- ===== SHEET 2: WIE IS NLWERKTAANWERK (exact pptx-slide) ===== -->
+<!-- ===== SHEET 2: NLWERKTAANWERK + MARJAN ===== -->
 <section class="pptx-slide">
   <div class="pptx-bar"></div>
   <div class="pptx-body">
-    <h2 class="pptx-logo"><span class="o">NL</span>werkt<span class="o">AAN</span>werk</h2>
-    <p class="pptx-intro">NLwerktaanwerk is een project van NLOM, een landelijk initiatief van werkgeversverenigingen.</p>
-    <div class="pptx-rule"></div>
-    <div class="pptx-cols">
-      <div class="pptx-col">
-        <h4>NL onderneemt Inclusief!</h4>
-        <ul>
-          <li>NLwerktaanwerk</li>
-          <li>Op naar de 125.000 banen!</li>
-          <li>Over Hoop</li>
-          <li>MDT</li>
-        </ul>
+    <div style="display:grid; grid-template-columns:1fr 1px 1fr; gap:40px; align-items:start;">
+
+      <!-- LINKER KOLOM: NLwerktAANwerk -->
+      <div>
+        <h2 class="pptx-logo" style="font-size:34px; margin-bottom:6px;"><span class="o">NL</span>werkt<span class="o">AAN</span>werk</h2>
+        <p style="font-family:var(--display); font-weight:700; font-size:18px; color:var(--blue); margin-bottom:22px;">Samen werkgevers verder helpen</p>
+
+        <div style="background:var(--orange); border-radius:6px 6px 0 0; padding:10px 18px;">
+          <p style="font-family:var(--display); font-weight:800; font-size:15px; color:#fff; margin:0;">Wat we doen</p>
+        </div>
+        <div style="border:2px solid var(--orange); border-top:none; border-radius:0 0 6px 6px; padding:16px 18px; margin-bottom:28px;">
+          <p style="font-size:14px; color:var(--ink); line-height:1.6; margin:0;">NLwerktaanwerk is jouw gids in de krappe arbeidsmarkt. De plek voor werkgevers met arbeidsmarktvraagstukken waar zij zelf geen oplossing voor vinden. We bieden advies, verbindingen en praktische oplossingen.</p>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:20px;">
+          <p style="font-family:var(--display); font-weight:800; font-size:20px; color:var(--ink); white-space:nowrap;">In 2024</p>
+          <div style="background:var(--orange); border-radius:50%; width:120px; height:120px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; flex-shrink:0;">
+            <span style="font-family:var(--display); font-weight:800; font-size:26px; color:#fff; line-height:1;">6.800+</span>
+            <span style="font-size:11px; color:#fff; margin-top:5px; line-height:1.4;">werkgevers<br>landelijk gesproken</span>
+          </div>
+        </div>
       </div>
-      <div class="pptx-col">
-        <h4>NL onderneemt Vitaal!</h4>
-        <p>Vitaal Bedrijf is dé wegwijzer voor werkgevers om aan de slag te gaan met vitaliteit in het bedrijf.</p>
-        <p class="pptx-link">https://www.vitaalbedrijf.info</p>
+
+      <!-- VERTICALE LIJN -->
+      <div style="background:var(--line); width:1px; align-self:stretch;"></div>
+
+      <!-- RECHTER KOLOM: Marjan + diensten -->
+      <div>
+        <p style="font-family:var(--display); font-weight:800; font-size:22px; color:var(--ink); margin-bottom:2px;">Marjan Lancee</p>
+        <p style="font-size:14px; color:var(--ink-soft); margin-bottom:20px;">Regisseur regio Gorinchem, Drechtsteden en Rivierenland</p>
+
+        <div style="height:1px; background:var(--line); margin-bottom:20px;"></div>
+
+        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:24px;">
+          <div style="display:flex; gap:12px; align-items:flex-start; font-size:14px;"><span style="width:11px; height:11px; border-radius:50%; background:var(--orange); flex-shrink:0; margin-top:4px;"></span>1op1 advies aan werkgevers</div>
+          <div style="display:flex; gap:12px; align-items:flex-start; font-size:14px;"><span style="width:11px; height:11px; border-radius:50%; background:var(--orange); flex-shrink:0; margin-top:4px;"></span>Workshops en inspiratiesessies</div>
+          <div style="display:flex; gap:12px; align-items:flex-start; font-size:14px;"><span style="width:11px; height:11px; border-radius:50%; background:var(--orange); flex-shrink:0; margin-top:4px;"></span>Landelijk actief met zo'n 35 collega's</div>
+          <div style="display:flex; gap:12px; align-items:flex-start; font-size:14px;"><span style="width:11px; height:11px; border-radius:50%; background:var(--orange); flex-shrink:0; margin-top:4px;"></span>Dienstverlening is kosteloos, geen lid nodig</div>
+        </div>
+
+        <div style="display:flex; gap:24px; justify-content:flex-start;">
+          <div class="pptx-icon-item">
+            <div class="pptx-icon-circle">🔍</div>
+            <div class="pptx-icon-label">GIDS NAAR<br>INFORMATIE</div>
+          </div>
+          <div class="pptx-icon-item">
+            <div class="pptx-icon-circle">👥</div>
+            <div class="pptx-icon-label">PERSOONLIJK<br>ADVIES</div>
+          </div>
+          <div class="pptx-icon-item">
+            <div class="pptx-icon-circle">⭐</div>
+            <div class="pptx-icon-label">INSPIRATIE<br>SESSIES</div>
+          </div>
+        </div>
       </div>
-      <div class="pptx-col">
-        <h4>NL onderneemt Circulair!</h4>
-        <p>Ondersteunt bedrijven bij circulariteit. We verbinden koplopers met organisaties die graag willen beginnen.</p>
-      </div>
+
     </div>
     <h3 class="pptx-logo-small"><span class="o">NL</span>werkt<span class="o">AAN</span>werk</h3>
   </div>
 </section>
 
-<!-- ===== SHEET 3: GIDS / MARJAN INTRO (exact pptx-slide) ===== -->
-<section class="pptx-slide">
+<!-- ===== REGIO IN BEELD ===== -->
+<section class="pptx-slide" id="regio">
   <div class="pptx-bar"></div>
-  <div class="pptx-body pptx-body-split">
-    <div class="pptx-left">
-      <div class="pptx-bullet"><span class="dot"></span> 1op1 advies aan werkgevers</div>
-      <div class="pptx-bullet"><span class="dot"></span> Workshops en inspiratiesessies</div>
-      <div class="pptx-bullet"><span class="dot"></span> 'Gidsen'</div>
-      <div class="pptx-hr"></div>
-      <p class="pptx-plain">Landelijk actief met zo'n 35 collega's</p>
-      <p class="pptx-plain">Dienstverlening is kosteloos (geen lid nodig)</p>
-      <p class="pptx-name">Marjan Lancee</p>
-      <p class="pptx-role">Regisseur regio Gorinchem, Drechtsteden en Rivierenland</p>
-    </div>
-    <div class="pptx-right">
-      <h2 class="pptx-logo" style="margin-bottom:50px;"><span class="o">NL</span>werkt<span class="o">AAN</span>werk</h2>
-      <div class="pptx-icons">
-        <div class="pptx-icon-item">
-          <div class="pptx-icon-circle">🔍</div>
-          <div class="pptx-icon-label">GIDS NAAR<br>INFORMATIE</div>
+  <div class="pptx-body">
+    <h2 class="pptx-logo" style="font-size:28px; margin-bottom:6px;">Regio in beeld</h2>
+    <p style="color:var(--ink-soft); font-size:14px; margin-bottom:28px;">Bron: UWV Regio in Beeld 2024-2025</p>
+
+    <!-- Rivierenland -->
+    <div style="max-width:600px;">
+      <div class="regio-card" style="border-top:4px solid var(--orange);">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px;">
+          <div class="regio-stat">
+            <div class="regio-stat-num">5.800</div>
+            <div class="regio-stat-lbl">open vacatures (gem. eerste helft 2025)</div>
+          </div>
+          <div class="regio-stat">
+            <div class="regio-stat-num">118.000</div>
+            <div class="regio-stat-lbl">werknemersbanen totaal in de regio</div>
+          </div>
         </div>
-        <div class="pptx-icon-item">
-          <div class="pptx-icon-circle">👥</div>
-          <div class="pptx-icon-label">PERSOONLIJK<br>ADVIES</div>
+        <div style="margin-bottom:14px;">
+          <div class="regio-tag groei">Groeit: zorg en welzijn (+200 banen)</div>
+          <div class="regio-tag groei">Groeit: ICT en techniek</div>
+          <div class="regio-tag krimpt">Krimpt: bouw, industrie en financiele diensten</div>
         </div>
-        <div class="pptx-icon-item">
-          <div class="pptx-icon-circle">⭐</div>
-          <div class="pptx-icon-label">INSPIRATIE<br>SESSIES</div>
+        <div style="padding-top:14px; border-top:1px solid var(--line); display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
+          <div>
+            <p class="regio-body"><strong>Vergrijzing</strong><br>4.400 werknemers van 60-67 jaar in publieke sectoren, waarvan 2.400 in zorg en welzijn.</p>
+          </div>
+          <div>
+            <p class="regio-body"><strong>Jongeren</strong><br>Minder jongeren stromen in dan ouderen uitstromen. Ontgroening maakt vervanging structureel moeilijk.</p>
+          </div>
+          <div>
+            <p class="regio-body"><strong>Onbenut potentieel</strong><br>14.000 mensen willen (meer) werken. 7.000 onderbenutte deeltijders, 4.000 werklozen.</p>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
-  <div class="facilitator-note" style="max-width:1100px; margin:24px auto 0;"><b>Voor de begeleider</b>Kort introduceren wie je bent en waarom je hier staat. NLwerktaanwerk: gratis advies voor werkgevers.</div>
 </section>
 
-<!-- ===== 00 OPENING / HERKENNING ===== -->
-<section class="section">
+<!-- ===== WAAROM BEN JE HIER ===== -->
+<section class="section" id="opening">
   <div class="section-head">
-    <span class="section-num">00</span>
-    <h2 class="section-title">Herkenning</h2>
+    <h2 class="section-title">Waarom ben je hier?</h2>
   </div>
-  <p class="lead">Wie herkent dit? Steek je hand op bij elke uitspraak die klopt voor jouw bedrijf.</p>
+  <p class="lead">Wat kom je halen vandaag? Steek je hand op bij wat voor jou geldt.</p>
 
   <div class="stelling-card">
-    <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:10px;">
-      <label style="display:flex; gap:12px; align-items:center; font-size:16px; cursor:pointer;">
-        <input type="checkbox" style="width:20px;height:20px;accent-color:var(--orange);"> Je hebt op dit moment een vacature openstaan
+    <div style="display:flex; flex-direction:column; gap:18px; margin-bottom:10px;">
+      <label style="display:flex; gap:14px; align-items:center; font-size:17px; cursor:pointer;">
+        <input type="checkbox" style="width:22px;height:22px;accent-color:var(--orange); flex-shrink:0;"> Ik heb een vacature openstaan en krijg weinig of geen reacties
       </label>
-      <label style="display:flex; gap:12px; align-items:center; font-size:16px; cursor:pointer;">
-        <input type="checkbox" style="width:20px;height:20px;accent-color:var(--orange);"> Je krijgt weinig of geen reacties
+      <label style="display:flex; gap:14px; align-items:center; font-size:17px; cursor:pointer;">
+        <input type="checkbox" style="width:22px;height:22px;accent-color:var(--orange); flex-shrink:0;"> Ik krijg reacties, maar de mensen zijn "net niet passend"
       </label>
-      <label style="display:flex; gap:12px; align-items:center; font-size:16px; cursor:pointer;">
-        <input type="checkbox" style="width:20px;height:20px;accent-color:var(--orange);"> Je krijgt reacties, maar ze zijn "net niet passend"
+      <label style="display:flex; gap:14px; align-items:center; font-size:17px; cursor:pointer;">
+        <input type="checkbox" style="width:22px;height:22px;accent-color:var(--orange); flex-shrink:0;"> Ik wil weten hoe ik mijn huidige mensen beter kan benutten
+      </label>
+      <label style="display:flex; gap:14px; align-items:center; font-size:17px; cursor:pointer;">
+        <input type="checkbox" style="width:22px;height:22px;accent-color:var(--orange); flex-shrink:0;"> Ik ben benieuwd wat er anders kan in mijn aanpak van werving
       </label>
     </div>
   </div>
+</section>
 
-  <div class="facilitator-note"><b>Voor de begeleider</b>Handen omhoog laten gaan in de zaal = energie en herkenning creeren. Elke hand is een knikje. Sluit af met de constatering: "dit speelt bij bijna iedereen hier."</div>
+<!-- ===== DRIE VRAAGSTUKKEN ===== -->
+<section class="section" id="vraagstukken">
+  <div class="section-head">
+    <h2 class="section-title">Drie vraagstukken</h2>
+  </div>
 
-  <div class="lead" style="margin-top:40px;">Drie ontwikkelingen die vragen om een andere aanpak:</div>
   <div class="three-grid">
     <div class="kgrid-card">
-      <h3>Krappe arbeidsmarkt</h3>
-      <p>Structurele schaarste. Minder instroom jongeren, grote groep gaat met pensioen.</p>
+      <div style="font-size:32px; margin-bottom:12px;">📉</div>
+      <h3>Arbeidsmarktkrapte</h3>
+      <p>Structureel, niet tijdelijk. Vergrijzing, uitstroom en te weinig instroom in cruciale sectoren zoals techniek, zorg en overheid.</p>
     </div>
     <div class="kgrid-card">
+      <div style="font-size:32px; margin-bottom:12px;">⚡</div>
       <h3>Arbeidsproductiviteit</h3>
-      <p>Bedrijven moeten meer doen met minder mensen. Onbenut arbeidspotentieel ligt te wachten.</p>
+      <p>Met dezelfde mensen meer werk doen. Technologie helpt, maar alleen als mensen de juiste skills hebben.</p>
     </div>
     <div class="kgrid-card">
-      <h3>Werk dat verandert</h3>
-      <p>Digitalisering, AI en transities veranderen werk sneller dan we kunnen bijhouden.</p>
+      <div style="font-size:32px; margin-bottom:12px;">🔄</div>
+      <h3>Werk verandert</h3>
+      <p>Robots, AI en maatschappelijke transities veranderen wat werk inhoudt. Daardoor zijn andere skills nodig, niet morgen, maar nu.</p>
     </div>
   </div>
 </section>
 
 <!-- ===== 01 STELLING 1 ===== -->
-<section class="section" id="stelling1">
+<!-- ===== WAT ZIJN SKILLS ===== -->
+<section class="section white-bg" id="skills">
   <div class="section-head">
-    <span class="section-num">01</span>
-    <h2 class="section-title">Stelling: diploma of skill?</h2>
+    <h2 class="section-title">Wat zijn skills?</h2>
   </div>
 
-  <div class="timer-box">
-    <div>
-      <div class="timer-label">Discussietijd</div>
-      <div class="timer-display" id="t1-display">08:00</div>
+  <!-- Quiz blok -->
+  <div style="background:var(--blue); border-radius:24px; overflow:hidden; margin-bottom:36px;">
+    <div style="padding:36px; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+      <div>
+        <p style="font-family:var(--display); font-weight:800; font-size:24px; color:#fff; margin-bottom:24px;">Wat zijn skills eigenlijk?</p>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <button class="quiz-opt" onclick="kiesOptie('A')" id="opt-A">A. Alleen je technische vaardigheden</button>
+          <button class="quiz-opt" onclick="kiesOptie('B')" id="opt-B">B. Dingen die je op school hebt geleerd</button>
+          <button class="quiz-opt" onclick="kiesOptie('C')" id="opt-C">C. Kennis, vaardigheden en gedrag</button>
+          <button class="quiz-opt" onclick="kiesOptie('D')" id="opt-D">D. Taken die je nu doet in je werk</button>
+        </div>
+        <div id="quiz-reactie" style="display:none; margin-top:20px; background:rgba(255,255,255,.12); border-radius:12px; padding:16px;">
+          <p style="color:#fff; font-size:14px; line-height:1.6;" id="quiz-tekst"></p>
+        </div>
+      </div>
     </div>
-    <div class="timer-controls">
-      <button onclick="startTimer('t1',8)">▶ Start</button>
-      <button onclick="pauseTimer('t1')">⏸ Pauze</button>
-      <button onclick="resetTimer('t1',8)">↺ Reset</button>
+  </div>
+
+  <!-- Gesprekskaarten -->
+  <p style="font-family:var(--display); font-weight:800; font-size:18px; color:var(--ink); margin-bottom:16px;">Bespreek met je buurman of buurvrouw:</p>
+  <div class="three-grid">
+    <div class="kgrid-card" style="border-left:4px solid var(--orange);">
+      <h3 style="color:var(--blue);">Noem 3 talenten van de collega naast je.</h3>
+      <textarea class="input-line" style="margin-top:14px; min-height:70px;" placeholder="Schrijf hier..."></textarea>
     </div>
+    <div class="kgrid-card" style="border-left:4px solid var(--orange);">
+      <h3 style="color:var(--blue);">Wat is een vaardigheid die je op je werk gebruikt, maar nooit op school hebt geleerd?</h3>
+      <textarea class="input-line" style="margin-top:14px; min-height:70px;" placeholder="Schrijf hier..."></textarea>
+    </div>
+    <div class="kgrid-card" style="border-left:4px solid var(--orange);">
+      <h3 style="color:var(--blue);">Welke skills heb jij?</h3>
+      <textarea class="input-line" style="margin-top:14px; min-height:70px;" placeholder="Schrijf hier..."></textarea>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STELLING: DIPLOMA OF SKILL ===== -->
+<section class="section" id="stelling1">
+  <div class="section-head">
+    <h2 class="section-title">Stelling: diploma of skill?</h2>
   </div>
 
   <div class="stelling-card">
@@ -565,150 +692,110 @@ footer{padding:30px 24px; text-align:center; font-family:var(--body); font-size:
       </button>
     </div>
     <div class="vote-bar-wrap"><div class="vote-bar-eens" id="s1-bar-eens" style="width:50%"></div><div class="vote-bar-oneens" id="s1-bar-oneens" style="width:50%"></div></div>
-    <textarea class="input-line" placeholder="💬 Geef een concreet voorbeeld uit jouw bedrijf..." style="margin-top:22px;"></textarea>
-  </div>
-
-  <div class="facilitator-note"><b>Voor de begeleider</b>Geef 8 minuten discussie. Vat daarna samen: de discussie laat zien dat we diploma's en ervaring vaak verwarren met kunnen.</div>
-
-  <div style="margin-top:36px; padding:28px; border:2px dashed var(--blue); border-radius:8px; background:#fff;">
-    <p style="font-family:var(--display); font-size:clamp(17px,2.5vw,22px); color:var(--blue-deep); line-height:1.4;">"Je zoekt iemand die het al gedaan heeft. Dus sluit je iedereen uit die het kan worden."</p>
-    <p style="margin-top:14px; color:var(--ink-soft); font-size:14.5px;">Een diploma zegt wat iemand geleerd <em>heeft</em>, niet wat iemand <em>kan</em>. En zeker niet wat iemand morgen kan leren.</p>
+    <div id="s1-reactie-eens" class="stelling-reactie reactie-eens" style="display:none;">
+      <p class="reactie-kop">Begrijpelijk. Maar...</p>
+      <p class="reactie-tekst">Dan sluit je op dit moment het grootste deel van de kandidatenmarkt buiten. Want wie heeft nog precies het diploma dat jij vraagt?</p>
+    </div>
+    <div id="s1-reactie-oneens" class="stelling-reactie reactie-oneens" style="display:none;">
+      <p class="reactie-kop">Goed. Dan is de vraag...</p>
+      <p class="reactie-tekst">Als diploma's er niet toe doen, wat dan wel? Precies dat gaan we vandaag uitzoeken.</p>
+    </div>
   </div>
 </section>
 
-<!-- ===== 02 WAT ZIJN SKILLS ===== -->
-<section class="section white-bg" id="skills">
+<!-- ===== OVERDRAAGBARE SKILLS ===== -->
+<section class="section white-bg" id="transferable">
   <div class="section-head">
-    <span class="section-num">02</span>
-    <h2 class="section-title">Wat zijn skills?</h2>
+    <h2 class="section-title">Overdraagbare skills</h2>
   </div>
-  <p class="lead">Je zoekt geen cv. Je zoekt iemand die het werk kan doen. Daar kijk je naar drie dingen:</p>
 
-  <div class="three-grid">
-    <div class="kgrid-card">
-      <h3>Wat iemand kan</h3>
-      <p>Concrete vaardigheden die het werk mogelijk maken. Direct inzetbaar op dag 1.</p>
-      <span class="ex">bijv. plannen, lassen, klantvragen afhandelen</span>
-    </div>
-    <div class="kgrid-card">
-      <h3>Hoe iemand werkt</h3>
-      <p>Werkstijl, samenwerking, karakter. Hoe reageert iemand als het druk wordt?</p>
-      <span class="ex">bijv. proactief, nauwkeurig, initiatief nemen</span>
-    </div>
-    <div class="kgrid-card">
-      <h3>Wat iemand kan leren</h3>
-      <p>Potentieel en leervermogen. Het meest onderschatte criterium bij kleine werkgevers.</p>
-      <span class="ex">bijv. leervermogen, aanpassingsvermogen</span>
+  <!-- Stap 1: bakker -->
+  <div class="skills-reveal-block" style="margin-bottom:32px;">
+    <button class="btn ghost" onclick="toonSkills('bakker')" style="margin-bottom:20px;">
+      Welke vaardigheden heeft een bakker? →
+    </button>
+    <div id="skills-bakker" class="skills-list" style="display:none;">
+      <span class="skill-chip reveal">Vroeg opstaan en doorzetten</span>
+      <span class="skill-chip reveal">Nauwkeurig doseren</span>
+      <span class="skill-chip reveal">Plannen onder tijdsdruk</span>
+      <span class="skill-chip reveal">Klantcontact</span>
+      <span class="skill-chip reveal">Hygiëne en kwaliteit bewaken</span>
+      <span class="skill-chip reveal">Samenwerken in klein team</span>
     </div>
   </div>
 
-  <div style="margin-top:50px;">
-    <h3 style="font-family:var(--display); font-weight:800; font-size:20px; margin-bottom:6px; color:var(--ink);">Transferable skills: het onzichtbare kapitaal</h3>
-    <p style="color:var(--ink-soft); font-size:15px; max-width:640px; margin-bottom:8px;">Vaardigheden die iemand meeneemt van de ene naar de andere functie, ongeacht sector of titel. Klik een kaart om de overstap te zien.</p>
-    <div class="flip-grid" id="flipGrid"></div>
+  <!-- Stap 2: laadpaalmonteur -->
+  <div class="skills-reveal-block" style="margin-bottom:40px;">
+    <button class="btn ghost" onclick="toonSkills('laadpaal')" style="margin-bottom:20px;">
+      Welke vaardigheden heeft een laadpaalmonteur nodig? →
+    </button>
+    <div id="skills-laadpaal" class="skills-list" style="display:none;">
+      <span class="skill-chip reveal">Technisch inzicht</span>
+      <span class="skill-chip reveal">Veiligheidsprotocollen volgen</span>
+      <span class="skill-chip reveal">Plannen en roosteren</span>
+      <span class="skill-chip reveal">Klantuitleg geven</span>
+      <span class="skill-chip reveal">Zelfstandig werken</span>
+      <span class="skill-chip reveal">Nauwkeurig meten en controleren</span>
+    </div>
+  </div>
+
+  <!-- Stap 3: plaatje -->
+  <img src="bakker-meterwisselaar.png" alt="Bakker en meterwisselaar met overlappende skills" style="width:100%; max-width:900px; border-radius:16px; margin-bottom:40px; display:block;">
+
+  <!-- Stap 4: 3 flip-kaartjes -->
+  <p style="font-family:var(--display); font-weight:800; font-size:18px; color:var(--ink); margin-bottom:16px;">Drie skills die je overal kunt inzetten:</p>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:18px;">
+
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="ficon">🧩</div>
+          <h4>Probleemoplossend denken</h4>
+          <div class="tap">klik voor meer</div>
+        </div>
+        <div class="flip-back">
+          <p>Analyseren wat er mis gaat en een oplossing bedenken zonder handleiding.</p>
+          <div class="route">Bruikbaar in: techniek, zorg, logistiek, horeca, administratie</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="ficon">🗂️</div>
+          <h4>Plannen en organiseren</h4>
+          <div class="tap">klik voor meer</div>
+        </div>
+        <div class="flip-back">
+          <p>Prioriteiten stellen, deadlines bewaken en het overzicht bewaren ook als het druk is.</p>
+          <div class="route">Bruikbaar in: productie, zorg, onderwijs, projecten, retail</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="ficon">💬</div>
+          <h4>Communicatie</h4>
+          <div class="tap">klik voor meer</div>
+        </div>
+        <div class="flip-back">
+          <p>Duidelijk uitleggen, goed luisteren en verwachtingen managen, met klanten en collega's.</p>
+          <div class="route">Bruikbaar in: klantenservice, zorg, onderwijs, sales, HR</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ===== 03 OEFENING 1 ===== -->
+<!-- ===== OEFENING 1 ===== -->
 <section class="section white-bg" id="oefening1">
   <div class="section-head">
-    <span class="section-num">03</span>
     <h2 class="section-title">Oefening: jouw vacature omdenken</h2>
   </div>
-
-  <div class="timer-box">
-    <div><div class="timer-label">Individueel werken</div><div class="timer-display" id="t2-display">15:00</div></div>
-    <div class="timer-controls">
-      <button onclick="startTimer('t2',15)">▶ Start</button>
-      <button onclick="pauseTimer('t2')">⏸ Pauze</button>
-      <button onclick="resetTimer('t2',15)">↺ Reset</button>
-    </div>
-  </div>
-
-  <div class="exercise">
-    <h3>Pak je vacature erbij</h3>
-    <div class="sub">. Of neem er één in gedachten. Werk eerst individueel, bespreek daarna met je buurman of buurvrouw.</div>
-
-    <div class="ex-step">
-      <div class="ex-num">1</div>
-      <div class="ex-step-body">
-        <h4>Wat moet iemand écht kunnen? (max. 5)</h4>
-        <p>Niet wat er in je vacature staat, maar wat het werk echt vraagt op dag 1. Denk in handelingen, niet in functienamen.</p>
-        <textarea placeholder="1. ...&#10;2. ...&#10;3. ..."></textarea>
-      </div>
-    </div>
-    <div class="ex-step">
-      <div class="ex-num">2</div>
-      <div class="ex-step-body">
-        <h4>Wat is "nice to have"?</h4>
-        <p>Welke eisen staan er die eigenlijk niet noodzakelijk zijn? Diploma's en jarenlange ervaring zijn vaak nice-to-have.</p>
-        <textarea placeholder="Bijv. specifiek diploma, X jaar ervaring..."></textarea>
-      </div>
-    </div>
-    <div class="ex-step">
-      <div class="ex-num">3</div>
-      <div class="ex-step-body">
-        <h4>Wie zou dit ook kunnen?</h4>
-        <p>Welke andere functies of achtergronden sluiten aan bij jouw 5 dingen? Hier gebeurt het inzicht.</p>
-        <textarea placeholder="Bijv. iemand uit de horeca, een herintreder, iemand uit de zorg..."></textarea>
-      </div>
-    </div>
-    <div class="print-note">👉 Hier gebeurt het inzicht, bespreek dit samen met je buurman/vrouw.</div>
-  </div>
-
-  <div class="facilitator-note" style="margin-top:24px;"><b>Voor de begeleider</b>Loop rond tijdens de oefening. Help mensen vertalen van functietitel naar handelingen. 15 min individueel, 5 min nabespreken.</div>
-
-  <div style="margin-top:40px; background:#fff; border:1px solid var(--line); border-radius:8px; padding:30px;">
-    <h4 style="font-family:var(--display); font-weight:800; font-size:16px; margin-bottom:14px; color:var(--ink);">🥖 Klassenoefening: welke vaardigheden heeft een bakker?</h4>
-    <div style="display:flex; gap:10px; flex-wrap:wrap;" id="bakkerChips">
-      <span class="chip">vroeg opstaan & doorzetten</span>
-      <span class="chip">nauwkeurig doseren</span>
-      <span class="chip">plannen onder tijdsdruk</span>
-      <span class="chip">klantcontact</span>
-      <span class="chip">hygiene en kwaliteit</span>
-      <span class="chip">fysiek werk volhouden</span>
-      <span class="chip">samenwerken in een klein team</span>
-    </div>
-    <p style="font-size:13px; color:var(--ink-soft); margin-top:14px;">Conclusie: een goede bakker zou ook prima meekunnen als productiemedewerker, in de horecakeuken of bij een logistiek bedrijf met vroege ploegendienst. De titel "bakker" verbergt skills die overal bruikbaar zijn.</p>
-  </div>
-</section>
-
-<!-- ===== 04 SKILLS TOOL DEMO ===== -->
-<section class="section white-bg" id="tool">
-  <div class="section-head">
-    <span class="section-num">04</span>
-    <h2 class="section-title">Live demo: skills tool</h2>
-  </div>
-  <p class="lead">Voer een beroep in en zie direct welke skills eronder liggen, en welke andere beroepen dezelfde skills hebben. Dát is jouw nieuwe doelgroep.</p>
-
-  <div class="tool-panel">
-    <div class="tool-input-row">
-      <input type="text" id="toolInput" placeholder="Typ een beroep, bijv. verspaner, magazijnmedewerker, klantenservice..." onkeydown="if(event.key==='Enter')runTool()">
-      <button class="btn" onclick="runTool()">🔍 Bekijk skills</button>
-    </div>
-    <div class="chip-row">
-      <span class="chip" onclick="quickTool('verspaner')">verspaner</span>
-      <span class="chip" onclick="quickTool('magazijnmedewerker')">magazijnmedewerker</span>
-      <span class="chip" onclick="quickTool('klantenservice')">klantenservice</span>
-      <span class="chip" onclick="quickTool('chauffeur')">chauffeur</span>
-      <span class="chip" onclick="quickTool('zorgmedewerker')">zorgmedewerker</span>
-    </div>
-
-    <div class="tool-result" id="toolResult">
-      <div class="tool-result-cols">
-        <div>
-          <h5>Onderliggende skills</h5>
-          <div id="toolSkills"></div>
-        </div>
-        <div>
-          <h5>Matchende beroepen: jouw nieuwe doelgroep</h5>
-          <div id="toolMatches"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="facilitator-note" style="margin-top:20px;"><b>Voor de begeleider</b>Dit is een vereenvoudigde demo-versie. Open in een echte sessie ook de live Skills Kompas tool en laat de groep zelf beroepen intypen. Bespreek de matches die uitkomen.</div>
 
   <div style="margin-top:36px;">
     <h4 style="font-family:var(--display); font-weight:800; font-size:16px; margin-bottom:14px; color:var(--ink);">Voorbeeld uit de praktijk: werkgever zoekt verspaners</h4>
@@ -725,38 +812,8 @@ footer{padding:30px 24px; text-align:center; font-family:var(--body); font-size:
 <!-- ===== 05 STELLING 2 ===== -->
 <section class="section white-bg" id="stelling2">
   <div class="section-head">
-    <span class="section-num">05</span>
     <h2 class="section-title">Stelling: veranderend werk</h2>
   </div>
-
-  <div class="timer-box">
-    <div><div class="timer-label">Discussietijd</div><div class="timer-display" id="t3-display">08:00</div></div>
-    <div class="timer-controls">
-      <button onclick="startTimer('t3',8)">▶ Start</button>
-      <button onclick="pauseTimer('t3')">⏸ Pauze</button>
-      <button onclick="resetTimer('t3',8)">↺ Reset</button>
-    </div>
-  </div>
-
-  <div class="stelling-card">
-    <div class="stelling-quote">"Over vijf jaar doet mijn medewerker ander werk dan nu, maar ik heb er nog nooit over nagedacht wat hij of zij dan nodig heeft."</div>
-    <p style="color:var(--ink-soft); font-size:14px;">Herken je dit? Wat zou het betekenen als je nu al wist welke skills je mensen nodig hebben?</p>
-    <div style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
-      <div>
-        <label style="font-family:var(--body); font-weight:700; font-size:12px; color:var(--orange);">💭 Welke functies veranderen bij jou?</label>
-        <textarea class="input-line"></textarea>
-      </div>
-      <div>
-        <label style="font-family:var(--body); font-weight:700; font-size:12px; color:var(--orange);">🤖 Wat doet AI al in je bedrijf?</label>
-        <textarea class="input-line"></textarea>
-      </div>
-      <div>
-        <label style="font-family:var(--body); font-weight:700; font-size:12px; color:var(--orange);">📚 Wie heeft iemand omgeschoold?</label>
-        <textarea class="input-line"></textarea>
-      </div>
-    </div>
-  </div>
-  <div class="facilitator-note"><b>Voor de begeleider</b>Geef 8 min discussie. Breng daarna de link met de volgende oefening: wat kunnen je huidige mensen al?</div>
 
   <div style="margin-top:40px;">
     <p class="lead" style="margin-bottom:14px;">Drie dingen die je wint als je anders gaat kijken:</p>
@@ -771,136 +828,49 @@ footer{padding:30px 24px; text-align:center; font-family:var(--body); font-size:
 <!-- ===== 06 CASE CARROUSEL ===== -->
 <section class="section white-bg" id="carrousel">
   <div class="section-head">
-    <span class="section-num">06</span>
     <h2 class="section-title">Case carrousel</h2>
   </div>
-  <p class="lead">Rouleer in groepjes langs de vier thema's, 8 minuten per thema. Noteer per thema minstens één concreet idee.</p>
-
-  <div class="timer-box">
-    <div><div class="timer-label">Per thema</div><div class="timer-display" id="t4-display">08:00</div></div>
-    <div class="timer-controls">
-      <button onclick="startTimer('t4',8)">▶ Start</button>
-      <button onclick="pauseTimer('t4')">⏸ Pauze</button>
-      <button onclick="resetTimer('t4',8)">↺ Reset / volgend thema</button>
-    </div>
-  </div>
-
-  <div class="carousel-grid">
-    <div class="carousel-card">
-      <span class="ctag">1, INSTROOM</span>
-      <h4>Werven</h4>
-      <p class="q">Hoe vind en selecteer ik meer kandidaten op basis van skills?</p>
-      <div class="ex2">vb. vacature herschrijven, samenwerken met opleiders</div>
-      <textarea placeholder="Ons idee..."></textarea>
-    </div>
-    <div class="carousel-card">
-      <span class="ctag">2, DOORSTROOM</span>
-      <h4>Benutten</h4>
-      <p class="q">Hoe benut ik verborgen skills van mijn huidige medewerkers beter?</p>
-      <div class="ex2">vb. interne talentkaarten of skillsmatrix maken</div>
-      <textarea placeholder="Ons idee..."></textarea>
-    </div>
-    <div class="carousel-card">
-      <span class="ctag">3, ONTWIKKELING</span>
-      <h4>Leren</h4>
-      <p class="q">Hoe stimuleer ik continu leren en bijscholen in mijn bedrijf?</p>
-      <div class="ex2">vb. skillspaspoort koppelen aan leerdoelen</div>
-      <textarea placeholder="Ons idee..."></textarea>
-    </div>
-    <div class="carousel-card">
-      <span class="ctag">4, SAMENWERKING</span>
-      <h4>Netwerk</h4>
-      <p class="q">Hoe werk ik samen met collega-bedrijven, scholen of O&O-fondsen?</p>
-      <div class="ex2">vb. regionale skills-pool, gezamenlijke instroomtrajecten</div>
-      <textarea placeholder="Ons idee..."></textarea>
-    </div>
-  </div>
-  <p style="margin-top:18px; font-family:var(--mono); font-size:13px; color:var(--blue);">→ Daarna presenteert elke groep kort hun input.</p>
+  <p class="lead">Rouleer in groepjes langs de vier thema's. Noteer per thema minstens één concreet idee.</p>
 </section>
-
-<!-- ===== 07 AFSLUITING / COMMITMENT ===== -->
-<section class="section white-bg" id="afsluiting">
-  <div class="section-head">
-    <span class="section-num">07</span>
-    <h2 class="section-title">Schrijf dit op</h2>
-  </div>
-
-  <div class="commit-card">
-    <h4>Loslaten</h4>
-    <p class="q">1 eis in je vacature die je schrapt of omschrijft naar een skill</p>
-    <textarea id="commit1"></textarea>
-
-    <h4>Nieuwe doelgroep</h4>
-    <p class="q">1 type persoon of achtergrond die je voortaan ook actief benadert</p>
-    <textarea id="commit2"></textarea>
-
-    <h4>Intern benutten</h4>
-    <p class="q">1 medewerker met wie je volgende week een gesprek voert over zijn of haar skills</p>
-    <textarea id="commit3"></textarea>
-
-    <button class="btn" style="background:var(--orange); border-color:var(--orange); color:#1B1500;" onclick="downloadCommit()">⬇ Download mijn 3 acties</button>
-  </div>
-  <div class="facilitator-note"><b>Voor de begeleider</b>Geef 3 minuten. Laat daarna een paar mensen hardop benoemen wat ze opschrijven, dat verstevigt het commitment.</div>
-</section>
-
-<!-- ===== CLOSING ===== -->
-<section class="closing">
-  <p class="closing-quote">"Als je alleen zoekt naar wie het al <span class="hi">is</span>, mis je iedereen die het kan <span class="hi">worden</span>."</p>
-  <p style="max-width:600px; margin:0 auto; color:rgba(245,241,232,.7); font-size:15px;">Je vacature bepaalt wie je mist. Jouw mensen bepalen wat je al hebt.</p>
-
-  <div class="gift-row">
-    <a href="#" class="gift-btn">🧭 Open Skills Kompas (gratis)</a>
-    <a href="#" class="gift-btn">✏️ Open Vacature Schrijver (gratis)</a>
-  </div>
-
-  <div class="contact">
-    <b>Marjan Lancee</b>
-    Regisseur NLwerktAANwerk, Gorinchem, Drechtsteden en Rivierenland<br>
-    📞 06-41077991 &nbsp;,&nbsp; ✉ marjan@marjanlancee.nl<br><br>
-    "Geen vacature is te klein voor een goed gesprek."
-  </div>
-</section>
-
-<footer>NLwerktAANwerk, onderdeel van NLOM, een landelijk initiatief van werkgeversverenigingen. Dienstverlening kosteloos, geen lidmaatschap nodig</footer>
 
 <script>
+/* ===== Skills reveal ===== */
+function toonSkills(id) {
+  const el = document.getElementById('skills-' + id);
+  if (!el) return;
+  el.style.display = 'flex';
+  const chips = el.querySelectorAll('.skill-chip');
+  chips.forEach((chip, i) => {
+    setTimeout(() => chip.classList.add('visible'), i * 200);
+  });
+}
+
+/* ===== Skills quiz ===== */
+function kiesOptie(keuze) {
+  const antwoorden = {
+    'A': 'Niet helemaal. Technische vaardigheden zijn een deel van skills, maar lang niet alles. Denk ook aan gedrag, samenwerking en leervermogen.',
+    'B': 'Nee. Veel van de waardevolste vaardigheden leer je juist niet op school, maar op de werkvloer, thuis of in het leven.',
+    'C': 'Precies! Skills zijn alles waarmee iemand werk doet: kennis, concrete vaardigheden en gedrag. En ook: wat iemand kan leren.',
+    'D': 'Niet alleen dat. Taken beschrijven wat je doet, skills beschrijven hoe en wat je daarvoor nodig hebt. Het verschil is cruciaal bij werving.'
+  };
+  ['A','B','C','D'].forEach(o => {
+    const btn = document.getElementById('opt-'+o);
+    btn.classList.remove('gekozen-fout','gekozen-goed');
+    if(o === keuze) btn.classList.add(keuze === 'C' ? 'gekozen-goed' : 'gekozen-fout');
+  });
+  document.getElementById('quiz-tekst').textContent = antwoorden[keuze];
+  document.getElementById('quiz-reactie').style.display = 'block';
+}
+
 /* ===== Scaffold scroll-spy ===== */
 const steps = document.querySelectorAll('.step');
-const sections = [...steps].map(s => document.getElementById(s.dataset.target));
+const sections = [...steps].map(s => document.getElementById(s.dataset.target)).filter(Boolean);
 function spy(){
   let current = sections[0];
   sections.forEach(sec=>{ if(sec && window.scrollY >= sec.offsetTop - 140) current = sec; });
-  steps.forEach(s=> s.classList.toggle('active', s.dataset.target === current.id));
+  steps.forEach(s=> s.classList.toggle('active', s.dataset.target === (current && current.id)));
 }
 window.addEventListener('scroll', spy); spy();
-
-/* ===== Timers ===== */
-const timers = {};
-function fmt(s){ const m=Math.floor(s/60); const sec=s%60; return String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0'); }
-function startTimer(id, mins){
-  if(!timers[id]) timers[id] = { remaining: mins*60, interval: null };
-  if(timers[id].interval) return;
-  timers[id].interval = setInterval(()=>{
-    timers[id].remaining--;
-    const disp = document.getElementById(id+'-display');
-    if(timers[id].remaining <= 0){
-      timers[id].remaining = 0;
-      clearInterval(timers[id].interval); timers[id].interval = null;
-      disp.classList.add('done'); disp.textContent = "00:00";
-      return;
-    }
-    disp.classList.toggle('warn', timers[id].remaining <= 60);
-    disp.textContent = fmt(timers[id].remaining);
-  }, 1000);
-}
-function pauseTimer(id){ if(timers[id] && timers[id].interval){ clearInterval(timers[id].interval); timers[id].interval = null; } }
-function resetTimer(id, mins){
-  if(timers[id] && timers[id].interval) clearInterval(timers[id].interval);
-  timers[id] = { remaining: mins*60, interval: null };
-  const disp = document.getElementById(id+'-display');
-  disp.classList.remove('warn','done');
-  disp.textContent = fmt(mins*60);
-}
 
 /* ===== Voting ===== */
 const votes = { s1: { eens:0, oneens:0 } };
@@ -914,28 +884,37 @@ function vote(poll, choice){
   const pctE = total ? (votes[poll].eens/total*100) : 50;
   document.getElementById('s1-bar-eens').style.width = pctE + '%';
   document.getElementById('s1-bar-oneens').style.width = (100-pctE) + '%';
+  const rEens = document.getElementById('s1-reactie-eens');
+  const rOneens = document.getElementById('s1-reactie-oneens');
+  if(rEens && rOneens){
+    const meerEens = votes[poll].eens >= votes[poll].oneens;
+    rEens.style.display = meerEens ? 'block' : 'none';
+    rOneens.style.display = meerEens ? 'none' : 'block';
+  }
 }
 
-/* ===== Flip cards: transferable skills ===== */
+/* ===== Flip cards ===== */
 const skillsData = [
   {icon:'🧩', title:'Probleemoplossend denken', desc:'Analyseren en oplossen zonder handleiding.', route:'Monteur, dan servicecoordinator, dan planner'},
   {icon:'💬', title:'Communicatie', desc:'Uitleggen, luisteren, verwachtingen managen.', route:'Leraar, dan trainer, dan accountmanager'},
-  {icon:'🗂️', title:'Plannen & organiseren', desc:'Prioriteiten stellen, deadlines halen.', route:'Logistiek medewerker, dan projectassistent'},
+  {icon:'🗂️', title:'Plannen en organiseren', desc:'Prioriteiten stellen, deadlines halen.', route:'Logistiek medewerker, dan projectassistent'},
   {icon:'🎯', title:'Nauwkeurigheid', desc:'Oog voor detail en kwaliteitsbesef.', route:'Verspaner, dan QC medewerker'},
-  {icon:'🤝', title:'Samenwerken', desc:"Collega's meekrijgen, flexibel in rol.", route:'Zorg / horeca / productie: allemaal teamwerk'},
+  {icon:'🤝', title:'Samenwerken', desc:"Collega's meekrijgen, flexibel in rol.", route:'Zorg, horeca, productie: allemaal teamwerk'},
   {icon:'🌱', title:'Leervermogen', desc:'Nieuwe dingen oppikken, omgaan met verandering.', route:'De skill van de toekomst, in elk beroep'},
 ];
 const flipGrid = document.getElementById('flipGrid');
-skillsData.forEach((s,i)=>{
-  const card = document.createElement('div');
-  card.className = 'flip-card';
-  card.innerHTML = `<div class="flip-inner">
-    <div class="flip-front"><div class="ficon">${s.icon}</div><h4>${s.title}</h4><div class="tap">tik voor voorbeeld</div></div>
-    <div class="flip-back"><p>${s.desc}</p><div class="route">${s.route}</div></div>
-  </div>`;
-  card.onclick = ()=> card.classList.toggle('flipped');
-  flipGrid.appendChild(card);
-});
+if(flipGrid){
+  skillsData.forEach((s)=>{
+    const card = document.createElement('div');
+    card.className = 'flip-card';
+    card.innerHTML = `<div class="flip-inner">
+      <div class="flip-front"><div class="ficon">${s.icon}</div><h4>${s.title}</h4><div class="tap">tik voor voorbeeld</div></div>
+      <div class="flip-back"><p>${s.desc}</p><div class="route">${s.route}</div></div>
+    </div>`;
+    card.onclick = ()=> card.classList.toggle('flipped');
+    flipGrid.appendChild(card);
+  });
+}
 
 /* ===== Skills tool demo ===== */
 const toolDB = {
@@ -950,7 +929,7 @@ function runTool(){
   const val = document.getElementById('toolInput').value.trim().toLowerCase();
   let data = toolDB[val];
   if(!data){
-    data = { skills:['plannen & organiseren','communicatie','nauwkeurig werken','samenwerken','probleemoplossend denken'], matches:['(typ een van de voorbeelden hierboven voor een specifieke match, of vul dit aan in de live tool)'] };
+    data = { skills:['plannen & organiseren','communicatie','nauwkeurig werken','samenwerken','probleemoplossend denken'], matches:['(typ een van de voorbeelden hierboven voor een specifieke match)'] };
   }
   document.getElementById('toolSkills').innerHTML = data.skills.map(s=>`<span class="skill-tag">${s}</span>`).join('');
   document.getElementById('toolMatches').innerHTML = data.matches.map(s=>`<span class="match-tag">${s}</span>`).join('');
@@ -962,7 +941,7 @@ function downloadCommit(){
   const c1 = document.getElementById('commit1').value || 'geen invulling';
   const c2 = document.getElementById('commit2').value || 'geen invulling';
   const c3 = document.getElementById('commit3').value || 'geen invulling';
-  const text = `MIJN 3 ACTIES - NLwerktAANwerk workshop\\n\\nLOSLATEN\\n${c1}\\n\\nNIEUWE DOELGROEP\\n${c2}\\n\\nINTERN BENUTTEN\\n${c3}\\n`;
+  const text = `MIJN 3 ACTIES - NLwerktAANwerk workshop\n\nLOSLATEN\n${c1}\n\nNIEUWE DOELGROEP\n${c2}\n\nINTERN BENUTTEN\n${c3}\n`;
   const blob = new Blob([text], {type:'text/plain'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
