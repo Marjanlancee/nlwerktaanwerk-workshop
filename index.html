@@ -129,6 +129,16 @@ h1.hero-title em{font-style:normal; color:var(--blue-deep);}
 .quiz-opt.gekozen-fout{background:#FBEAE7; border-color:var(--red); color:var(--red);}
 .quiz-opt.gekozen-goed{background:#E8F5EE; border-color:var(--green); color:var(--green);}
 
+.prog-item{display:flex; gap:14px; align-items:flex-start; padding:12px 0; border-bottom:1px solid var(--line);}
+.prog-item:last-child{border-bottom:none;}
+.prog-dot{width:10px; height:10px; border-radius:50%; background:var(--orange); flex-shrink:0; margin-top:5px;}
+.prog-item div{font-size:15px; color:var(--ink);}
+
+.carrousel-item{display:flex; gap:20px; align-items:flex-start; padding:18px; background:var(--paper-dark); border-radius:14px;}
+.carrousel-num{font-family:var(--display); font-weight:800; font-size:22px; color:var(--orange); width:32px; flex-shrink:0;}
+.carrousel-vraag{font-size:15px; font-weight:600; color:var(--blue); margin-bottom:6px;}
+.carrousel-vb{font-size:13px; color:var(--ink-soft); font-style:italic;}
+
 /* === REGIO IN BEELD === */
 .regio-stat{background:var(--paper-dark); border-radius:16px; padding:20px; text-align:center;}
 .regio-stat-num{font-family:var(--display); font-weight:800; font-size:36px; color:var(--orange); line-height:1;}
@@ -443,16 +453,18 @@ footer{padding:30px 24px; text-align:center; font-family:var(--body); font-size:
   <div class="scaffold-inner" id="scaffoldNav">
     <div class="scaffold-logo"><span class="o">NL</span>werkt<span class="aan">AAN</span>werk</div>
     <div class="steps">
-      <a href="#regio" class="step" data-target="regio">· Regio</a>
-      <a href="#opening" class="step" data-target="opening">00, Waarom</a>
-      <a href="#vraagstukken" class="step" data-target="vraagstukken">· Vraagstukken</a>
-      <a href="#stelling1" class="step" data-target="stelling1">01, Stelling</a>
-      <a href="#skills" class="step" data-target="skills">02, Skills</a>
-      <a href="#oefening1" class="step" data-target="oefening1">03, Omdenken</a>
-      <a href="#tool" class="step" data-target="tool">04, Tool</a>
-      <a href="#stelling2" class="step" data-target="stelling2">05, Stelling</a>
-      <a href="#carrousel" class="step" data-target="carrousel">06, Carrousel</a>
-      <a href="#afsluiting" class="step" data-target="afsluiting">07, Actie</a>
+      <a href="#programma" class="step" data-target="programma">Programma</a>
+      <a href="#regio" class="step" data-target="regio">Regio</a>
+      <a href="#opening" class="step" data-target="opening">Waarom</a>
+      <a href="#vraagstukken" class="step" data-target="vraagstukken">Vraagstukken</a>
+      <a href="#skills" class="step" data-target="skills">Skills</a>
+      <a href="#stelling1" class="step" data-target="stelling1">Stelling</a>
+      <a href="#transferable" class="step" data-target="transferable">Overdraagbaar</a>
+      <a href="#verspaner" class="step" data-target="verspaner">Verspaner</a>
+      <a href="#talentradar" class="step" data-target="talentradar">Talentradar</a>
+      <a href="#oefening1" class="step" data-target="oefening1">Oefening</a>
+      <a href="#stelling2" class="step" data-target="stelling2">Wat win je</a>
+      <a href="#afsluiting" class="step" data-target="afsluiting">Cadeau</a>
     </div>
   </div>
 </nav>
@@ -536,6 +548,54 @@ footer{padding:30px 24px; text-align:center; font-family:var(--body); font-size:
 
     </div>
     <h3 class="pptx-logo-small"><span class="o">NL</span>werkt<span class="o">AAN</span>werk</h3>
+  </div>
+</section>
+
+<!-- ===== PROGRAMMA ===== -->
+<section class="pptx-slide" id="programma">
+  <div class="pptx-bar"></div>
+  <div class="pptx-body">
+    <h2 class="pptx-logo" style="font-size:28px; margin-bottom:6px;">Programma</h2>
+    <div class="pptx-rule"></div>
+    <div style="display:flex; flex-direction:column; gap:0;">
+      <div class="prog-item">
+        <span class="prog-dot"></span>
+        <div><strong>Voorstelrondje</strong> — naam, bedrijf en functie</div>
+      </div>
+      <div class="prog-item">
+        <span class="prog-dot"></span>
+        <div><strong>Wie is NLwerktAANwerk?</strong> — en waarom ben je hier?</div>
+      </div>
+      <div class="prog-item">
+        <span class="prog-dot"></span>
+        <div><strong>Regio in beeld</strong> — wat speelt er in Rivierenland?</div>
+      </div>
+      <div class="prog-item">
+        <span class="prog-dot"></span>
+        <div><strong>Drie vraagstukken</strong> — wat maakt werven zo lastig?</div>
+      </div>
+      <div class="prog-item">
+        <span class="prog-dot"></span>
+        <div><strong>Wat zijn skills?</strong> — stelling en oefening</div>
+      </div>
+      <div class="prog-item">
+        <span class="prog-dot"></span>
+        <div><strong>Overdraagbare skills</strong> — de bakker en de meterwisselaar</div>
+      </div>
+      <div class="prog-item">
+        <span class="prog-dot"></span>
+        <div><strong>Talentradar en Vacature Herschrijver</strong> — live demo</div>
+      </div>
+      <div class="prog-item">
+        <span class="prog-dot"></span>
+        <div><strong>Oefening</strong> — staand in groepjes bij de flipover, vacature omdenken</div>
+      </div>
+      <div class="prog-item">
+        <span class="prog-dot"></span>
+        <div><strong>Wat win je?</strong> en jouw cadeau</div>
+      </div>
+    </div>
+    <h3 class="pptx-logo-small" style="margin-top:32px;"><span class="o">NL</span>werkt<span class="o">AAN</span>werk</h3>
   </div>
 </section>
 
@@ -789,47 +849,217 @@ footer{padding:30px 24px; text-align:center; font-family:var(--body); font-size:
   </div>
 </section>
 
+<!-- ===== WERKGEVER ZOEKT VERSPANERS ===== -->
+<section class="section" id="verspaner">
+  <div class="section-head">
+    <h2 class="section-title" style="color:var(--orange);">Werkgever zoekt verspaners</h2>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1.4fr; gap:48px; align-items:start;">
+
+    <!-- Links: verhaal + cijfers -->
+    <div>
+      <p style="font-size:16px; font-weight:700; color:var(--ink); margin-bottom:20px;">Technisch verwante functies (direct overstapbaar, veel mensen beschikbaar)</p>
+      <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px; font-style:italic;">Indicatie arbeidsmarkt (UWV / CompetentNL): Deze beroepen hebben een <strong style="color:var(--ink);">grotere werkendenpopulatie</strong> dan verspaners. Voorbeeld:</p>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 16px; background:var(--paper-dark); border-radius:10px;">
+          <span style="font-size:14px; color:var(--ink);">Verspaners</span>
+          <span style="font-family:var(--display); font-weight:800; font-size:16px; color:var(--orange);">± 7.000</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 16px; background:var(--paper-dark); border-radius:10px;">
+          <span style="font-size:14px; color:var(--ink);">Productiemedewerkers metaal</span>
+          <span style="font-family:var(--display); font-weight:800; font-size:16px; color:var(--orange);">± 40.000</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 16px; background:var(--paper-dark); border-radius:10px;">
+          <span style="font-size:14px; color:var(--ink);">Operators</span>
+          <span style="font-family:var(--display); font-weight:800; font-size:16px; color:var(--orange);">± 50.000+</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 16px; background:var(--paper-dark); border-radius:10px;">
+          <span style="font-size:14px; color:var(--ink);">Lasser / bankwerker</span>
+          <span style="font-family:var(--display); font-weight:800; font-size:16px; color:var(--orange);">± 25.000</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rechts: tabel -->
+    <div>
+      <table style="width:100%; border-collapse:collapse; font-size:13.5px;">
+        <thead>
+          <tr style="border-bottom:2px solid var(--blue);">
+            <th style="text-align:left; padding:10px 12px; color:var(--ink); font-weight:700;">Beroep</th>
+            <th style="text-align:left; padding:10px 12px; color:var(--ink); font-weight:700;">Overlap met verspaner</th>
+            <th style="text-align:left; padding:10px 12px; color:var(--ink); font-weight:700;">Waarom kansrijk voor werving</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#EEF1F8;">
+            <td style="padding:10px 12px; font-weight:700; color:var(--ink);">Productiemedewerker metaal / industrie</td>
+            <td style="padding:10px 12px; color:var(--ink-soft);">Procesmatig werken, nauwkeurigheid, veiligheidsbewustzijn</td>
+            <td style="padding:10px 12px; color:var(--ink-soft);">Grootste instroomgroep in technische sector; vaak geen diploma vereist, makkelijk op te leiden naar verspaner.</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px; font-weight:700; color:var(--ink);">Machinebediener / operator</td>
+            <td style="padding:10px 12px; color:var(--ink-soft);">Procesinzicht, kwaliteitscontrole, zelfstandig werken</td>
+            <td style="padding:10px 12px; color:var(--ink-soft);">Veel aanwezig in voeding-, verpakkings- of kunststofindustrie; goed te herscholen via CNC-training.</td>
+          </tr>
+          <tr style="background:#EEF1F8;">
+            <td style="padding:10px 12px; font-weight:700; color:var(--ink);">Montagemedewerker / assemblagemedewerker</td>
+            <td style="padding:10px 12px; color:var(--ink-soft);">Technisch inzicht, tekening lezen, materialenkennis</td>
+            <td style="padding:10px 12px; color:var(--ink-soft);">Grotere groep, vaak handvaardig en gewend aan productielijnen.</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px; font-weight:700; color:var(--ink);">Lasser / constructiebankwerker</td>
+            <td style="padding:10px 12px; color:var(--ink-soft);">Materiaalkennis, precisie, veiligheidsbewustzijn</td>
+            <td style="padding:10px 12px; color:var(--ink-soft);">Veel groter volume dan verspaners, maar vaardigheden sterk verwant.</td>
+          </tr>
+          <tr style="background:#EEF1F8;">
+            <td style="padding:10px 12px; font-weight:700; color:var(--ink);">Onderhoudsmonteur algemeen</td>
+            <td style="padding:10px 12px; color:var(--ink-soft);">Probleemoplossend vermogen, technisch inzicht</td>
+            <td style="padding:10px 12px; color:var(--ink-soft);">Groeiende groep door energie- en bouwsector; overstap mogelijk bij CNC-ervaring.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TALENTRADAR ===== -->
+<section class="section" id="talentradar">
+  <div class="section-head">
+    <h2 class="section-title">Talentradar</h2>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+    <div>
+      <p style="font-family:var(--display); font-weight:800; font-size:22px; color:var(--ink); margin-bottom:14px;">Plak je vacature of functieprofiel. Ontdek wie er nog meer geschikt is.</p>
+      <p style="font-size:15px; color:var(--ink-soft); margin-bottom:16px;">Naast diploma's vraagt een functie ook om vaardigheden. De Talentradar laat zien welke skills bij jouw vacature horen, wie er nog meer geschikt is, en hoe je een bredere groep kunt aanspreken.</p>
+      <p style="font-size:15px; color:var(--ink-soft); margin-bottom:28px;">Plak gewoon je vacaturetekst of functienaam in (bijv. "Monteur Elektrotechniek") en de tool doet de rest.</p>
+      <a href="https://radar-voor-talent.vercel.app/" target="_blank" class="btn" style="font-size:16px; padding:16px 32px;">
+        Open Talentradar →
+      </a>
+    </div>
+    <div style="background:var(--blue); border-radius:20px; padding:32px; color:#fff;">
+      <p style="font-size:14px; color:rgba(255,255,255,.7); margin-bottom:16px;">Op een cv zie je goed wat iemand heeft gedaan. Wat iemand kan en wil, staat er veelal niet in, dat zit in skills. Daarom kijkt deze analyse naar skills in plaats van alleen naar diploma's of werkervaring.</p>
+      <p style="font-size:14px; color:rgba(255,255,255,.7);">Zodra je weet welke skills bij de functie horen, kun je de vacaturetekst daarop aanscherpen. Zo spreek je vanzelf een bredere doelgroep aan.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ===== OEFENING 1 ===== -->
 <section class="section white-bg" id="oefening1">
   <div class="section-head">
-    <h2 class="section-title">Oefening: jouw vacature omdenken</h2>
+    <h2 class="section-title">Oefening: vacature omdenken</h2>
   </div>
 
-  <div style="margin-top:36px;">
-    <h4 style="font-family:var(--display); font-weight:800; font-size:16px; margin-bottom:14px; color:var(--ink);">Voorbeeld uit de praktijk: werkgever zoekt verspaners</h4>
-    <p style="font-size:14px; color:var(--ink-soft); margin-bottom:14px;">Technisch verwante functies zijn direct overstapbaar en er zijn veel meer mensen beschikbaar (bron: UWV / CompetentNL):</p>
-    <div class="stat-strip">
-      <div class="stat"><div class="num">7K</div><div class="lbl">Verspaners</div></div>
-      <div class="stat"><div class="num">25K</div><div class="lbl">Lasser / bankwerker</div></div>
-      <div class="stat"><div class="num">40K</div><div class="lbl">Productiemed. metaal</div></div>
-      <div class="stat"><div class="num">50K+</div><div class="lbl">Operators</div></div>
+  <div class="exercise">
+    <h3>Sta op en ga naar de flipover</h3>
+    <div class="sub">Verdeel in groepjes van 3 of 4. Elke groep krijgt een vacature uitgedeeld. Schrijf jullie antwoorden op de flipover.</div>
+
+    <div class="ex-step">
+      <div class="ex-num">1</div>
+      <div class="ex-step-body">
+        <h4>Wat moet iemand echt kunnen?</h4>
+        <p>Schrijf maximaal 5 concrete handelingen op. Niet de functietitel, niet het diploma — wat doet iemand op dag 1?</p>
+      </div>
+    </div>
+
+    <div class="ex-step">
+      <div class="ex-num">2</div>
+      <div class="ex-step-body">
+        <h4>Wat is nice-to-have?</h4>
+        <p>Welke eisen in de vacature zijn eigenlijk niet strikt noodzakelijk? Wat kun je leren op de werkvloer?</p>
+      </div>
+    </div>
+
+    <div class="ex-step">
+      <div class="ex-num">3</div>
+      <div class="ex-step-body">
+        <h4>Wie zou dit ook kunnen?</h4>
+        <p>Welke andere achtergrond, sector of functie past bij deze 5 dingen? Denk buiten de voor de hand liggende kandidaat.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:28px; background:rgba(255,255,255,.1); border-radius:12px; padding:18px;">
+      <p style="color:rgba(255,255,255,.9); font-size:15px;">Daarna presenteert elk groepje kort wat ze hebben bedacht. Wat valt op? Wat verrast je?</p>
     </div>
   </div>
 </section>
 
-<!-- ===== 05 STELLING 2 ===== -->
+
+<!-- ===== DRIE DINGEN DIE JE WINT ===== -->
 <section class="section white-bg" id="stelling2">
   <div class="section-head">
-    <h2 class="section-title">Stelling: veranderend werk</h2>
+    <h2 class="section-title">Drie dingen die je wint als je anders gaat kijken</h2>
   </div>
-
-  <div style="margin-top:40px;">
-    <p class="lead" style="margin-bottom:14px;">Drie dingen die je wint als je anders gaat kijken:</p>
-    <div class="win-grid">
-      <div class="win-card"><div class="wn">01</div><h4>Andere doelgroepen aanspreken</h4><p>Je bereikt mensen die nooit op jouw vacature hadden gereageerd maar het werk prima kunnen doen.</p></div>
-      <div class="win-card"><div class="wn">02</div><h4>Medewerkers gericht laten groeien</h4><p>Als je weet welke skills iemand al heeft, weet je ook wat iemand nog nodig heeft. Gerichte ontwikkeling.</p></div>
-      <div class="win-card"><div class="wn">03</div><h4>Inspelen op veranderend werk</h4><p>Functies veranderen door automatisering en AI. Skills blijven overdraagbaar. Wie skills bijhoudt, blijft overeind.</p></div>
+  <div class="win-grid">
+    <div class="win-card" style="border-top:4px solid var(--orange); background:#fff;">
+      <div class="wn" style="color:var(--orange); opacity:.15;">01</div>
+      <h4 style="color:var(--ink);">Andere doelgroepen aanspreken</h4>
+      <p style="color:var(--ink-soft);">Je bereikt mensen die nooit op jouw vacature hadden gereageerd maar het werk prima kunnen doen.</p>
+    </div>
+    <div class="win-card" style="border-top:4px solid var(--orange); background:#fff;">
+      <div class="wn" style="color:var(--orange); opacity:.15;">02</div>
+      <h4 style="color:var(--ink);">Medewerkers gericht laten groeien</h4>
+      <p style="color:var(--ink-soft);">Als je weet welke skills iemand al heeft, weet je ook wat iemand nog nodig heeft.</p>
+    </div>
+    <div class="win-card" style="border-top:4px solid var(--orange); background:#fff;">
+      <div class="wn" style="color:var(--orange); opacity:.15;">03</div>
+      <h4 style="color:var(--ink);">Inspelen op veranderend werk</h4>
+      <p style="color:var(--ink-soft);">Functies veranderen door automatisering en AI. Skills blijven overdraagbaar.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== 06 CASE CARROUSEL ===== -->
-<section class="section white-bg" id="carrousel">
+<!-- ===== JOUW CADEAU / AFSLUITING ===== -->
+<section class="section" id="afsluiting" style="background:var(--blue-deep);">
   <div class="section-head">
-    <h2 class="section-title">Case carrousel</h2>
+    <h2 class="section-title" style="color:#fff;">Jouw cadeau</h2>
   </div>
-  <p class="lead">Rouleer in groepjes langs de vier thema's. Noteer per thema minstens één concreet idee.</p>
+  <p style="color:rgba(255,255,255,.7); font-size:15px; margin-bottom:32px;">Twee tools — direct te gebruiken, gratis</p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:40px;">
+    <div style="background:rgba(255,255,255,.07); border-radius:16px; padding:28px; display:flex; flex-direction:column; justify-content:space-between; min-height:260px;">
+      <div>
+        <p style="font-family:var(--mono); font-size:11px; color:var(--orange-soft); letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">Talentradar</p>
+        <p style="font-family:var(--display); font-weight:800; font-size:22px; color:#fff; margin-bottom:16px;">🎯 Talentradar</p>
+        <p style="font-size:14px; color:rgba(255,255,255,.75); line-height:1.6;">Voer een beroep in en ontdek welke skills erbij horen en welke andere beroepen matchen. Zo vind je jouw nieuwe doelgroep.</p>
+      </div>
+      <a href="https://radar-voor-talent.vercel.app/" target="_blank" style="display:block; margin-top:24px; background:var(--orange); color:#fff; text-align:center; padding:14px; border-radius:8px; font-weight:700; text-decoration:none;">→ Open Talentradar</a>
+    </div>
+    <div style="background:rgba(255,255,255,.07); border-radius:16px; padding:28px; display:flex; flex-direction:column; justify-content:space-between; min-height:260px;">
+      <div>
+        <p style="font-family:var(--mono); font-size:11px; color:var(--orange-soft); letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">Vacature-herschrijver</p>
+        <p style="font-family:var(--display); font-weight:800; font-size:22px; color:#fff; margin-bottom:16px;">✏️ Vacature Herschrijver</p>
+        <p style="font-size:14px; color:rgba(255,255,255,.75); line-height:1.6;">Plak je huidige vacature in en krijg direct een skills-gerichte versie terug. Klaar om te plaatsen.</p>
+      </div>
+      <a href="https://vacature-herschrijver.vercel.app/" target="_blank" style="display:block; margin-top:24px; background:var(--orange); color:#fff; text-align:center; padding:14px; border-radius:8px; font-weight:700; text-decoration:none;">→ Open Vacature Herschrijver</a>
+    </div>
+  </div>
+  <p style="text-align:center; font-style:italic; color:rgba(255,255,255,.6); font-size:15px;">Hulp nodig? Ik kom graag langs — dit cadeau is het begin.</p>
 </section>
+
+<!-- ===== CONTACTSLIDE ===== -->
+<section class="pptx-slide">
+  <div class="pptx-bar"></div>
+  <div class="pptx-body" style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;">
+    <div>
+      <div style="margin-bottom:30px;">
+        <svg viewBox="0 0 120 120" width="80" height="80"><circle cx="60" cy="60" r="55" fill="#FFF1EB"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="52">❓</text></svg>
+      </div>
+      <div style="height:4px; background:var(--orange); border-radius:2px; width:200px; margin-bottom:28px;"></div>
+      <p style="font-family:var(--display); font-weight:800; font-size:20px; color:var(--ink); margin-bottom:6px;">Marjan Lancee</p>
+      <p style="font-weight:700; color:var(--blue); margin-bottom:16px;">Regisseur Nlwerktaanwerk</p>
+      <p style="font-size:15px; color:var(--ink); margin-bottom:8px;">📞 06-41077991</p>
+      <p style="font-size:15px; color:var(--ink);">✉ marjan@marjanlancee.nl</p>
+    </div>
+    <div style="text-align:right;">
+      <img src="marjan-foto.jpg" alt="Marjan Lancee" style="width:220px; height:220px; object-fit:cover; border-radius:50%; border:4px solid var(--orange); margin-bottom:24px; display:inline-block;">
+      <br>
+      <h2 class="pptx-logo" style="font-size:32px;"><span class="o">NL</span>werkt<span class="o">AAN</span>werk</h2>
+    </div>
+  </div>
+</section>
+
+<footer>NLwerktAANwerk, onderdeel van NLOM, een landelijk initiatief van werkgeversverenigingen. Dienstverlening kosteloos, geen lidmaatschap nodig.</footer>
 
 <script>
 /* ===== Skills reveal ===== */
