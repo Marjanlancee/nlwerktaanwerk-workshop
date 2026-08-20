@@ -465,6 +465,7 @@ footer{padding:30px 24px; text-align:center; font-family:var(--body); font-size:
       <a href="#regio" class="step" data-target="regio">Regio</a>
       <a href="#opening" class="step" data-target="opening">Waarom</a>
       <a href="#vraagstukken" class="step" data-target="vraagstukken">Vraagstukken</a>
+      <a href="#skills-maakindustrie" class="step" data-target="skills-maakindustrie">Jouw bedrijf</a>
       <a href="#skills" class="step" data-target="skills">Skills</a>
       <a href="#stelling1" class="step" data-target="stelling1">Stelling</a>
       <a href="#transferable" class="step" data-target="transferable">Overdraagbaar</a>
@@ -584,6 +585,10 @@ footer{padding:30px 24px; text-align:center; font-family:var(--body); font-size:
       </div>
       <div class="prog-item">
         <span class="prog-dot"></span>
+        <div><strong>Hoe verandert werk in jouw bedrijf?</strong> — live demo per bedrijf</div>
+      </div>
+      <div class="prog-item">
+        <span class="prog-dot"></span>
         <div><strong>Wat zijn skills?</strong> — stelling en oefening</div>
       </div>
       <div class="prog-item">
@@ -611,41 +616,27 @@ footer{padding:30px 24px; text-align:center; font-family:var(--body); font-size:
 <section class="pptx-slide" id="regio">
   <div class="pptx-bar"></div>
   <div class="pptx-body">
-    <h2 class="pptx-logo" style="font-size:28px; margin-bottom:6px;">Regio in beeld</h2>
-    <p style="color:var(--ink-soft); font-size:14px; margin-bottom:28px;">Bron: UWV Regio in Beeld 2024-2025</p>
+    <h2 class="pptx-logo" style="font-size:28px; margin-bottom:6px;">Regio in beeld: trends en cijfers</h2>
+    <p style="color:var(--ink-soft); font-size:15px; margin-bottom:32px;">Kies een regio en bekijk wat werkgevers daar merken. Bron: UWV Regio in Beeld 2025-2026 en UWV Spanningsindicator.</p>
 
-    <!-- Rivierenland -->
-    <div style="max-width:600px;">
-      <div class="regio-card" style="border-top:4px solid var(--orange);">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px;">
-          <div class="regio-stat">
-            <div class="regio-stat-num">5.800</div>
-            <div class="regio-stat-lbl">open vacatures (gem. eerste helft 2025)</div>
-          </div>
-          <div class="regio-stat">
-            <div class="regio-stat-num">118.000</div>
-            <div class="regio-stat-lbl">werknemersbanen totaal in de regio</div>
-          </div>
-        </div>
-        <div style="margin-bottom:14px;">
-          <div class="regio-tag groei">Groeit: zorg en welzijn (+200 banen)</div>
-          <div class="regio-tag groei">Groeit: ICT en techniek</div>
-          <div class="regio-tag krimpt">Krimpt: bouw, industrie en financiele diensten</div>
-        </div>
-        <div style="padding-top:14px; border-top:1px solid var(--line); display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
-          <div>
-            <p class="regio-body"><strong>Vergrijzing</strong><br>4.400 werknemers van 60-67 jaar in publieke sectoren, waarvan 2.400 in zorg en welzijn.</p>
-          </div>
-          <div>
-            <p class="regio-body"><strong>Jongeren</strong><br>Minder jongeren stromen in dan ouderen uitstromen. Ontgroening maakt vervanging structureel moeilijk.</p>
-          </div>
-          <div>
-            <p class="regio-body"><strong>Onbenut potentieel</strong><br>14.000 mensen willen (meer) werken. 7.000 onderbenutte deeltijders, 4.000 werklozen.</p>
-          </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+      <div>
+        <p style="font-size:16px; color:var(--ink); margin-bottom:24px;">Nederland telt 35 arbeidsmarktregio's. Selecteer jouw regio en zie direct de belangrijkste arbeidsmarktcijfers: vacatures, vergrijzing, sectoren en onbenut potentieel.</p>
+        <a href="https://nlwerktaanwerk-presentatie.vercel.app/#regio" target="_blank" class="btn" style="font-size:16px; padding:16px 32px; margin-bottom:16px; display:inline-block;">
+          Open regio in beeld →
+        </a>
+      </div>
+      <div style="background:var(--paper-dark); border-radius:18px; padding:28px;">
+        <p style="font-family:var(--display); font-weight:700; font-size:13px; color:var(--orange); text-transform:uppercase; letter-spacing:1px; margin-bottom:16px;">Wat zie je per regio?</p>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; gap:10px; font-size:14px; color:var(--ink);"><span style="color:var(--orange);">→</span> Openstaande vacatures</div>
+          <div style="display:flex; gap:10px; font-size:14px; color:var(--ink);"><span style="color:var(--orange);">→</span> Vergrijzing en uitstroom</div>
+          <div style="display:flex; gap:10px; font-size:14px; color:var(--ink);"><span style="color:var(--orange);">→</span> Grootste sectoren</div>
+          <div style="display:flex; gap:10px; font-size:14px; color:var(--ink);"><span style="color:var(--orange);">→</span> Onbenut arbeidspotentieel</div>
+          <div style="display:flex; gap:10px; font-size:14px; color:var(--ink);"><span style="color:var(--orange);">→</span> Krapte-indicator per beroep</div>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -697,9 +688,38 @@ footer{padding:30px 24px; text-align:center; font-family:var(--body); font-size:
       <p>Robots, AI en maatschappelijke transities veranderen wat werk inhoudt. Daardoor zijn andere skills nodig, niet morgen, maar nu.</p>
     </div>
   </div>
+  <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+    <span style="font-family:var(--display); font-size:11px; font-weight:600; color:var(--ink-soft); padding:5px 12px; background:var(--paper-dark); border-radius:999px;">WEF Future of Jobs 2025: 39% van vaardigheden verandert voor 2030</span>
+    <span style="font-family:var(--display); font-size:11px; font-weight:600; color:var(--ink-soft); padding:5px 12px; background:var(--paper-dark); border-radius:999px;">Draghi-rapport: lage productiviteit en groeiend tekort aan vaardigheden</span>
+    <span style="font-family:var(--display); font-size:11px; font-weight:600; color:var(--ink-soft); padding:5px 12px; background:var(--paper-dark); border-radius:999px;">McKinsey: miljoenen werknemers hebben voor 2030 nieuwe vaardigheden nodig</span>
+  </div>
 </section>
 
-<!-- ===== 01 STELLING 1 ===== -->
+<!-- ===== SKILLS MAAKINDUSTRIE TOOL ===== -->
+<section class="section" id="skills-maakindustrie">
+  <div class="section-head">
+    <h2 class="section-title">Hoe verandert werk in jouw bedrijf?</h2>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+    <div>
+      <p style="font-family:var(--display); font-weight:800; font-size:20px; color:var(--ink); margin-bottom:14px;">Iedereen heeft het opeens over skills. Hier is waarom.</p>
+      <p style="font-size:15px; color:var(--ink-soft); margin-bottom:16px;">Kies jouw bedrijf en zie direct hoe de drie vraagstukken zich vertalen naar jouw eigen situatie. Welke functies veranderen? Welke skills worden straks gevraagd?</p>
+      <a href="https://skills-maakindustrie.vercel.app/" target="_blank" class="btn" style="font-size:16px; padding:16px 32px;">
+        Open de tool →
+      </a>
+    </div>
+    <div style="background:var(--paper-dark); border-radius:18px; padding:28px;">
+      <p style="font-family:var(--display); font-weight:700; font-size:13px; color:var(--orange); text-transform:uppercase; letter-spacing:1px; margin-bottom:16px;">Wat zie je per bedrijf?</p>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; gap:10px; font-size:14px; color:var(--ink);"><span style="color:var(--orange);">→</span> Hoe krapte, productiviteit en veranderend werk concreet speelt</div>
+        <div style="display:flex; gap:10px; font-size:14px; color:var(--ink);"><span style="color:var(--orange);">→</span> Welke functies straks anders zijn of verdwijnen</div>
+        <div style="display:flex; gap:10px; font-size:14px; color:var(--ink);"><span style="color:var(--orange);">→</span> Welke skills daarvoor nodig zijn</div>
+        <div style="display:flex; gap:10px; font-size:14px; color:var(--ink);"><span style="color:var(--orange);">→</span> Hoe je nu al kunt anticiperen</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== WAT ZIJN SKILLS ===== -->
 <section class="section white-bg" id="skills">
   <div class="section-head">
@@ -1042,7 +1062,6 @@ footer{padding:30px 24px; text-align:center; font-family:var(--body); font-size:
       <a href="https://vacature-herschrijver.vercel.app/" target="_blank" style="display:block; margin-top:24px; background:var(--orange); color:#fff; text-align:center; padding:14px; border-radius:8px; font-weight:700; text-decoration:none;">→ Open Vacature Herschrijver</a>
     </div>
   </div>
-  <p style="text-align:center; font-style:italic; color:rgba(255,255,255,.6); font-size:15px;">Hulp nodig? Ik kom graag langs — dit cadeau is het begin.</p>
 </section>
 
 <!-- ===== CONTACTSLIDE ===== -->
@@ -1067,7 +1086,7 @@ footer{padding:30px 24px; text-align:center; font-family:var(--body); font-size:
   </div>
 </section>
 
-<footer>NLwerktAANwerk, onderdeel van NLOM, een landelijk initiatief van werkgeversverenigingen. Dienstverlening kosteloos, geen lidmaatschap nodig.</footer>
+<footer>NLwerktAANwerk, onderdeel van NLOM, een landelijk initiatief van werkgeversverenigingen.</footer>
 
 <script>
 /* ===== Skills reveal ===== */
